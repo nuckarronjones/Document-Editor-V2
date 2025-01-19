@@ -1,0 +1,265 @@
+.githublink {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 30px;
+  font-size: 40px;
+}
+
+/*for highlighting color change*/
+::selection {
+  background: #b0a5da; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #b0a5da; /* Gecko Browsers */
+}
+
+/*custom scroll bar*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bfbfbf;
+  border-radius: 10px;
+}
+/*******************/
+
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  background: #e4e4e4;
+  font-size: 12pt;
+  user-select: none; /*Disables highlighting in all elements except text area*/
+}
+input {
+  font-family: "Roboto", sans-serif;
+  background: #e4e4e4;
+  width: 15rem;
+}
+hr {
+  /*seperator for list items in toolbar*/
+  width: 1px;
+  height: 15px;
+  display: inline-block;
+  background-color: lightgrey;
+  border: none;
+}
+select {
+  border: none;
+  font-size: 11pt;
+  background-color: transparent;
+}
+.bi {
+  padding: 5px;
+  background: -moz-linear-gradient(top, blue 0%, #a742c6 100%);
+  background: -webkit-linear-gradient(top, blue 0%, #a742c6 100%);
+  background: linear-gradient(to bottom, blue 0%, #a742c6 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+input {
+  border: 2px solid lightgrey;
+  border-radius: 3px;
+  font-family: "Roboto", sans-serif;
+  padding: 2px;
+  color: grey;
+}
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  border-radius: 5px;
+
+  font-size: 11pt;
+}
+button:not(#logo):hover {
+  background-color: lightgrey;
+  transform: scale(1.1);
+}
+.hidden {
+  visibility: hidden;
+}
+.toolbar {
+  padding-top: 1rem;
+}
+.hover > li:hover {
+  cursor: default; /*stops cursor from changing to text cursor when hovering menu items */
+  background-color: #eee;
+}
+.noBullets {
+  list-style-type: none;
+  text-align: left;
+}
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+
+/********************/
+#shapes_Modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: grey;
+  z-index: 3;
+
+  opacity: 0.5;
+}
+#modal_Content {
+  border-radius: 3px;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 3rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-height: 40vw;
+  max-width: 63vw;
+  background-color: white;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+}
+#modal_Exit_BTN {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+}
+.iconlist {
+  max-height: 30vh;
+  max-width: 35vw;
+  overflow-y: overlay;
+  padding: 1rem;
+  border-radius: 3px;
+  border: 2px solid lightgrey;
+}
+#shapes_Selection > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin: 0.75rem;
+  width: 100px;
+  height: 100px;
+  overflow: auto;
+}
+#shapes_Selection > li > img {
+  vertical-align: middle;
+}
+
+#shapes_Selection > li:hover {
+  background-color: lightgrey;
+  border-radius: 3px;
+  transform: scale(1.1);
+}
+
+#toolbar-container {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+
+  background-color: white;
+  height: auto;
+  box-shadow: 0 4px 2px -2px lightgray;
+  z-index: 2; /*overlay ontop of document */
+}
+#logo {
+  font-size: 15pt;
+  margin-left: -0.3rem;
+}
+
+#text_Settings {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-top: 1px solid lightgrey;
+  margin-bottom: 1rem;
+  font-size: 10pt;
+}
+.text_Settings_Tools {
+  list-style-type: none;
+  display: inline;
+  height: auto;
+}
+.text_Settings_Tools > li {
+  display: inline-block;
+  border-radius: 3px;
+  width: auto;
+  margin-left: 15px;
+  margin-right: 15px;
+
+  text-align: center;
+}
+.popup_Selector {
+  width: auto;
+  height: auto;
+  background-color: white;
+  box-shadow: 4px 4px 4px 4px lightgray;
+  position: absolute;
+  z-index: 2;
+  font-size: 10pt;
+
+  max-height: 20rem;
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+.popup_Selector li {
+  padding: 0.5rem;
+}
+#colorGridWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+  padding: 1rem;
+}
+.color_Box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid lightgrey;
+}
+
+#text_Container {
+  margin-top: 8rem;
+
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: fixed;
+}
+#text_Area {
+  box-sizing: border-box;
+  background-color: white;
+  width: 8.5in;
+  height: 11in;
+  padding: 1in;
+  overflow: scroll;
+
+  border: none;
+  outline: none;
+}
