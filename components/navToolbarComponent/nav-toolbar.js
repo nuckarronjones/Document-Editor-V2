@@ -1,8 +1,7 @@
-import { DocumentSettingsComponent } from "./document-settings.js";
-import { TextEditorToolbarComponent } from "./text-editor-toolbar.js";
+import { DocumentSettingsComponent } from "./documentSettingsComponent/document-settings.js";
+import { TextEditorToolbarComponent } from "./textEditorToolbarComponent/text-editor-toolbar.js";
 
 export class NavToolbarComponent {
-
   constructor() {
     this.documentSettings = new DocumentSettingsComponent();
     this.textEditorToolbar = new TextEditorToolbarComponent();
