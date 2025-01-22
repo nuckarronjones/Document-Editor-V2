@@ -6,21 +6,7 @@ export class TextEditorToolbarComponent {
     this.eventListenerService = eventListenerService;
     this.toolbarService = toolbarService;
   }
-
-  renderDropdown(targetId) {
-    const element = document.getElementById(targetId);
-
-    if (element.classList.contains("visible")) {
-      document.getElementById(targetId).classList.remove("visible");
-      document.getElementById(targetId).classList.add("hidden");
-
-    } else if (element.classList.contains("hidden")) {
-
-      document.getElementById(targetId).classList.remove("hidden");
-      document.getElementById(targetId).classList.add("visible");
-    }
-  }
-
+  
   renderFontList() {
     const fontList = this.toolbarService.FONTLIST;
     let htmlFormattedList = [];
@@ -58,17 +44,17 @@ export class TextEditorToolbarComponent {
     {
       id: "font-loader",
       eventType: "click",
-      action: () => this.renderDropdown("font-dropdown"),
+      action: () => this.toolbarService.renderDropdown("font-dropdown"),
     },
     {
       id: "font-size-loader",
       eventType: "click",
-      action: () => this.renderDropdown("font-sizes-dropdown"),
+      action: () => this.toolbarService.renderDropdown("font-sizes-dropdown"),
     },
     {
       id: "font-colors-loader",
       eventType: "click",
-      action: () => this.renderDropdown("colors-dropdown"),
+      action: () => this.toolbarService.renderDropdown("colors-dropdown"),
     },
   ];
 

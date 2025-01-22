@@ -1,20 +1,22 @@
 import { eventListenerService } from "../../../services/event-service.js";
+import { toolbarService } from "../../../services/toolbar-service.js";
 
 export class DocumentSettingsComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
+    this.toolbarService = toolbarService;
   }
 
   events = [
     {
       id: "file-options",
       eventType: "click",
-      action: () => this.renderDropdown("file-options-dropdown"),
+      action: () => this.toolbarService.renderDropdown("file-options-dropdown"),
     },
     {
       id: "insert-options",
       eventType: "click",
-      action: () => this.renderDropdown("insert-options-dropdown"),
+      action: () => this.toolbarService.renderDropdown("insert-options-dropdown"),
     },
   ];
 
