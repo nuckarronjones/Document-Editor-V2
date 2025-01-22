@@ -1,6 +1,39 @@
-export class DocumentSettingsComponent{
-    render(){
-        return `
+import { eventListenerService } from "../../../services/event-service.js";
+
+export class DocumentSettingsComponent {
+  constructor() {
+    this.eventListenerService = eventListenerService;
+  }
+
+  events = [
+    {
+      id: "file-options",
+      eventType: "click",
+      action: () => this.renderDropdown("file-options-dropdown"),
+    },
+    {
+      id: "insert-options",
+      eventType: "click",
+      action: () => this.renderDropdown("insert-options-dropdown"),
+    },
+  ];
+
+  renderDropdown(targetId) {
+    const element = document.getElementById(targetId);
+
+    if (element.classList.contains("visible")) {
+      document.getElementById(targetId).classList.remove("visible");
+      document.getElementById(targetId).classList.add("hidden");
+    } else if (element.classList.contains("hidden")) {
+      document.getElementById(targetId).classList.remove("hidden");
+      document.getElementById(targetId).classList.add("visible");
+    }
+  }
+
+  render() {
+    this.eventListenerService.events.push(...this.events);
+
+    return `
            <div id="name_Toolbar" class="toolbar">
                 <ul class="text_Settings_Tools">
                     <li>
@@ -14,9 +47,9 @@ export class DocumentSettingsComponent{
 
                 <div id="document_Settings" class="toolbar">
                 <ul class="text_Settings_Tools hover">
-                    <li>
+                    <li id="file-options">
                     File
-                    <div id="file_Options" class="popup-selector hidden">
+                    <div id="file-options-dropdown" class="popup-selector hidden">
                         <ul class="noBullets hover">
                         <li id="btn-export">Download (.docx)</li>
                         <li id="print">Print<i class="bi bi-printer"></i></li>
@@ -24,9 +57,9 @@ export class DocumentSettingsComponent{
                     </div>
                     </li>
 
-                    <li>
+                    <li id="insert-options">
                     Insert
-                    <div id="Insert" class="popup-selector hidden">
+                    <div id="insert-options-dropdown" class="popup-selector hidden">
                         <ul class="noBullets hover">
                         <li>Shapes<i class="bi bi-star"></i></li>
                         </ul>
@@ -35,5 +68,5 @@ export class DocumentSettingsComponent{
                 </ul>
             </div>
         `;
-    }
+  }
 }
