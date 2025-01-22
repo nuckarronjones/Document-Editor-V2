@@ -28,17 +28,34 @@ class ToolbarService {
     ["white", "#FFFFFF"],
   ];
 
-  renderDropdown(targetId) {
-    const element = document.getElementById(targetId);
-
-    if (element.classList.contains("visible")) {
-      document.getElementById(targetId).classList.remove("visible");
-      document.getElementById(targetId).classList.add("hidden");
-    } else if (element.classList.contains("hidden")) {
-      document.getElementById(targetId).classList.remove("hidden");
-      document.getElementById(targetId).classList.add("visible");
-    }
+  _setActiveDropdown(elementID) {
+    this.activeDropdownElementId = elementID;
   }
+
+  renderDropdown(targetId) {
+    const clickedElement = (targetId);
+    const currentActiveDropdown = this.activeDropdownElementId;
+
+    if(currentActiveDropdown == clickedElement){
+        this._setActiveDropdown(null);
+        document.getElementById(clickedElement).classList.remove("visible");
+        document.getElementById(clickedElement).classList.add("hidden");
+    }else if(currentActiveDropdown){
+        document.getElementById(currentActiveDropdown).classList.remove("visible");
+        document.getElementById(currentActiveDropdown).classList.add("hidden");
+
+        this._setActiveDropdown(clickedElement);
+
+        document.getElementById(clickedElement).classList.remove("hidden");
+        document.getElementById(clickedElement).classList.add("visible");
+    }else{
+        this._setActiveDropdown(clickedElement);
+        document.getElementById(clickedElement).classList.remove("hidden");
+        document.getElementById(clickedElement).classList.add("visible");
+    }
+    
+  }
+
 }
 
 export const toolbarService = new ToolbarService();
