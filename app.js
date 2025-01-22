@@ -1,8 +1,10 @@
 import { NavToolbarComponent } from "./components/navToolbarComponent/nav-toolbar.js";
 import { DocumentComponent } from "./components/documentComponent/document.js";
+import { eventListenerService } from "./services/event-service.js";
 
 class App {
   constructor() {
+    this.eventListenerService = eventListenerService;
     this.documentComponent = new DocumentComponent();
     this.navbarComponent = new NavToolbarComponent();
   }
@@ -16,6 +18,7 @@ class App {
     `;
 
     appElement.innerHTML = html;
+   this.eventListenerService.initializeEventListeners();
   };
 }
 
