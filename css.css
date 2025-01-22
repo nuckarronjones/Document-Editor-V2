@@ -213,7 +213,7 @@ button:not(#logo):hover {
 
   text-align: center;
 }
-.popup_Selector {
+.popup-selector {
   width: auto;
   height: auto;
   background-color: white;
@@ -226,10 +226,10 @@ button:not(#logo):hover {
   overflow-y: overlay;
   overflow-x: hidden;
 }
-.popup_Selector li {
+.popup-selector li {
   padding: 0.5rem;
 }
-#colorGridWrapper {
+#colors-dropdown > div {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
