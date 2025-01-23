@@ -13,7 +13,7 @@ export class TextEditorToolbarComponent {
 
     for (let i = 0; i < fontList.length; i++) {
       htmlFormattedList.push(
-        `<li style='font-family: ${fontList[i]};'> ${fontList[i]} &emsp;</li>`
+        `<li class='dropdown-font-option' style='font-family: ${fontList[i]};'> ${fontList[i]} &emsp;</li>`
       );
     }
     return htmlFormattedList.join("");
@@ -23,7 +23,7 @@ export class TextEditorToolbarComponent {
     let htmlFormattedList = [];
 
     for (let i = 3; i < 76; i++) {
-      htmlFormattedList.push(`<li> ${i} &emsp;</li>`);
+      htmlFormattedList.push(`<li class='dropdown-size-list'> ${i} &emsp;</li>`);
     }
     return htmlFormattedList.join("");
   }
@@ -56,6 +56,16 @@ export class TextEditorToolbarComponent {
       eventType: "click",
       action: () => this.toolbarService.renderDropdown("colors-dropdown"),
     },
+    {
+      class: "dropdown-font-option",
+      eventType: "click",
+      action: (pointer) => this.toolbarService.setDocumentFont(pointer),
+    },
+    {
+      class: "dropdown-size-list",
+      eventType: "click",
+      action: (pointer) => this.toolbarService.setDocumentFontSize(pointer),
+    },
   ];
 
   render() {
@@ -65,7 +75,7 @@ export class TextEditorToolbarComponent {
         <div id="text_Settings" class="toolbar">
             <ul class="text_Settings_Tools hover">
                 <li id="font-loader">
-                <span id="fontStyleTitle">Times New Roman</span>
+                <span id="font-option-preview">Times New Roman</span>
                 <i class="bi bi-chevron-compact-down"></i>
                 <div id="font-dropdown" class="popup-selector hidden">
                     <ul class="noBullets hover">
@@ -79,7 +89,7 @@ export class TextEditorToolbarComponent {
                 <li id="font-size-loader">
                 <span id="fontSizeTitle">15pt</span>
                 <i class="bi bi-chevron-compact-down"></i>
-                <div id="font-sizes-dropdown" class="popup-selector hidden">
+                <div id="font-size-preview" class="popup-selector hidden">
                     <ul class="noBullets hover">
                     ${this.renderFontSizeList()}
                     </ul>

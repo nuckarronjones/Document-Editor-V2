@@ -28,34 +28,54 @@ class ToolbarService {
     ["white", "#FFFFFF"],
   ];
 
+  get documentElement() {
+    return document.getElementById("main-document");
+  }
+
   _setActiveDropdown(elementID) {
     this.activeDropdownElementId = elementID;
   }
 
-  renderDropdown(targetId) {
-    const clickedElement = (targetId);
-    const currentActiveDropdown = this.activeDropdownElementId;
+  setDocumentFont(pointer) {
+    const fontSelection = pointer.target.style.fontFamily.replace(/['"]/g, "");
 
-    if(currentActiveDropdown == clickedElement){
-        this._setActiveDropdown(null);
-        document.getElementById(clickedElement).classList.remove("visible");
-        document.getElementById(clickedElement).classList.add("hidden");
-    }else if(currentActiveDropdown){
-        document.getElementById(currentActiveDropdown).classList.remove("visible");
-        document.getElementById(currentActiveDropdown).classList.add("hidden");
-
-        this._setActiveDropdown(clickedElement);
-
-        document.getElementById(clickedElement).classList.remove("hidden");
-        document.getElementById(clickedElement).classList.add("visible");
-    }else{
-        this._setActiveDropdown(clickedElement);
-        document.getElementById(clickedElement).classList.remove("hidden");
-        document.getElementById(clickedElement).classList.add("visible");
-    }
-    
+    document.getElementById(
+      "font-option-preview"
+    ).innerHTML = `<span style='font-family: ${fontSelection};'>${fontSelection}</span>`;
+    this.documentElement.style.fontFamily = fontSelection;
   }
 
+  setDocumentFontSize(pointer) {
+    const fontSize = `${parseInt(pointer.target.innerHTML)}pt`;
+    
+    document.getElementById("font-size-preview").innerText = fontSize;
+    this.documentElement.style.fontSize = fontSize;
+  }
+
+  renderDropdown(targetId) {
+    const clickedElement = targetId;
+    const currentActiveDropdown = this.activeDropdownElementId;
+
+    if (currentActiveDropdown == clickedElement) {
+      this._setActiveDropdown(null);
+      document.getElementById(clickedElement).classList.remove("visible");
+      document.getElementById(clickedElement).classList.add("hidden");
+    } else if (currentActiveDropdown) {
+      document
+        .getElementById(currentActiveDropdown)
+        .classList.remove("visible");
+      document.getElementById(currentActiveDropdown).classList.add("hidden");
+
+      this._setActiveDropdown(clickedElement);
+
+      document.getElementById(clickedElement).classList.remove("hidden");
+      document.getElementById(clickedElement).classList.add("visible");
+    } else {
+      this._setActiveDropdown(clickedElement);
+      document.getElementById(clickedElement).classList.remove("hidden");
+      document.getElementById(clickedElement).classList.add("visible");
+    }
+  }
 }
 
 export const toolbarService = new ToolbarService();
