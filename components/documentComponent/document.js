@@ -3,7 +3,7 @@ export class DocumentComponent {
     return `
         <div id="text_Container">
             <div
-                id="text_Area"
+                id="main-document"
                 contenteditable
                 style="
                 font-family: Times new roman;

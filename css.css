@@ -252,7 +252,7 @@ button:not(#logo):hover {
   justify-content: center;
   display: fixed;
 }
-#text_Area {
+#main-document {
   box-sizing: border-box;
   background-color: white;
   width: 8.5in;
