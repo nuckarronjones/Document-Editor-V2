@@ -23,7 +23,9 @@ export class TextEditorToolbarComponent {
     let htmlFormattedList = [];
 
     for (let i = 3; i < 76; i++) {
-      htmlFormattedList.push(`<li class='dropdown-size-list'> ${i} &emsp;</li>`);
+      htmlFormattedList.push(
+        `<li class='dropdown-size-list'> ${i} &emsp;</li>`
+      );
     }
     return htmlFormattedList.join("");
   }
@@ -55,6 +57,11 @@ export class TextEditorToolbarComponent {
       id: "font-colors-loader",
       eventType: "click",
       action: () => this.toolbarService.renderDropdown("colors-dropdown"),
+    },
+    {
+      id: "line-spacing-loader",
+      eventType: "click",
+      action: () => this.toolbarService.renderDropdown("line-spacing-dropdown"),
     },
     {
       class: "dropdown-font-option",
@@ -134,9 +141,9 @@ export class TextEditorToolbarComponent {
                 <button><i class="bi bi-justify-right"></i></button>
                 </li>
 
-                <li title="Line Spacing">
+                <li id="line-spacing-loader" title="Line Spacing">
                 <button><i class="bi bi-arrows-expand"></i></button>
-                <div id="line_Spacing" class="popup-selector hidden">
+                <div id="line-spacing-dropdown" class="popup-selector hidden">
                     <ul class="noBullets hover">
                     <li>Single</li>
                     <li>1.15</li>
