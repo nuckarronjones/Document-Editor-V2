@@ -6,7 +6,7 @@ export class TextEditorToolbarComponent {
     this.eventListenerService = eventListenerService;
     this.toolbarService = toolbarService;
   }
-  
+
   renderFontList() {
     const fontList = this.toolbarService.FONTLIST;
     let htmlFormattedList = [];
@@ -49,7 +49,7 @@ export class TextEditorToolbarComponent {
     {
       id: "font-size-loader",
       eventType: "click",
-      action: () => this.toolbarService.renderDropdown("font-sizes-dropdown"),
+      action: () => this.toolbarService.renderDropdown("font-size-preview"),
     },
     {
       id: "font-colors-loader",
