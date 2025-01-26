@@ -29,11 +29,11 @@ class ToolbarService {
   ];
 
   LINE_SPACINGS = {
-      "Single": "1",
-      "1.15": "1.15",
-      "1.5": "1.5",
-      "Double": "2"
-  }
+    Single: "1",
+    1.15: "1.15",
+    1.5: "1.5",
+    Double: "2",
+  };
 
   get documentElement() {
     return document.getElementById("main-document");
@@ -63,6 +63,34 @@ class ToolbarService {
     const spacing = pointer.target.dataset.spacing;
 
     this.documentElement.style.lineHeight = spacing;
+  }
+
+  exportDocument() {
+    const header =
+      "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
+      "xmlns:w='urn:schemas-microsoft-com:office:word' " +
+      "xmlns='http://www.w3.org/TR/REC-html40'>" +
+      "<head><meta charset='utf-8'><title>Export HTML to Word Document with JavaScript</title></head><body>";
+    const footer = "</body></html>";
+    const sourceHTML =
+      header + document.getElementById("text_Container").innerHTML + footer;
+
+    const source =
+      "data:application/vnd.ms-word;charset=utf-8," +
+      encodeURIComponent(sourceHTML);
+    const fileDownload = document.createElement("a");
+
+    document.body.appendChild(fileDownload);
+
+    fileDownload.href = source;
+
+    fileDownload.download = `${
+      document.getElementById("documentName").value
+    } .doc`;
+
+    fileDownload.click();
+    
+    document.body.removeChild(fileDownload);
   }
 
   renderDropdown(targetId) {

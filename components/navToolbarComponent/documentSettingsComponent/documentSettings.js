@@ -21,6 +21,11 @@ export class DocumentSettingsComponent {
       action: () => this.toolbarService.renderDropdown("insert-options-dropdown"),
     },
     {
+      id: "export-button",
+      eventType: "click",
+      action: () => this.toolbarService.exportDocument(),
+    },
+    {
       id: "toggle-shapes-modal",
       eventType: "click",
       action: () => this.modalService.setModalSubject("ShapesModal"),
@@ -60,8 +65,8 @@ export class DocumentSettingsComponent {
                     File
                     <div id="file-options-dropdown" class="popup-selector hidden">
                         <ul class="noBullets hover">
-                        <li id="btn-export">Download (.docx)</li>
-                        <li id="print">Print<i class="bi bi-printer"></i></li>
+                        <li id="export-button">Download (.docx)</li>
+                        <li >Print<i class="bi bi-printer"></i></li>
                         </ul>
                     </div>
                     </li>
