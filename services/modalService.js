@@ -9,7 +9,6 @@ class ModalService{
     }
 
     setModalSubject(modal){
-        console.log("changing subject");
         this.modalSubject = modal;
         this._notifySubscribers(); 
     }
