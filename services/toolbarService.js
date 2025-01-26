@@ -93,6 +93,18 @@ class ToolbarService {
     document.body.removeChild(fileDownload);
   }
 
+  printDocument(){
+    const documentContents = document.getElementById("text_Container").innerHTML;
+    const windowedDocument = window.open("", "", "height=1375p, width=1063");
+    
+    windowedDocument.document.write("<html>");
+    windowedDocument.document.write("<body >");
+    windowedDocument.document.write(documentContents);
+    windowedDocument.document.write("</body></html>");
+    windowedDocument.document.close();
+    windowedDocument.print();
+  }
+
   renderDropdown(targetId) {
     const clickedElement = targetId;
     const currentActiveDropdown = this.activeDropdownElementId;
