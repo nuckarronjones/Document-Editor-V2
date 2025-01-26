@@ -90,6 +90,11 @@ export class TextEditorToolbarComponent {
       eventType: "click",
       action: (pointer) => this.toolbarService.setDocumentLineSpacing(pointer),
     },
+    {
+      class: "text-styling-option",
+      eventType: "click",
+      action: (pointer) => this.toolbarService.setTextStyling(pointer),
+    },
 
   ];
 
@@ -123,21 +128,21 @@ export class TextEditorToolbarComponent {
 
                 <hr />
 
-                <li class="text_Settings_Tools_Item" title="Bold Text">
-                <button><i class="bi bi-type-bold"></i></button>
+                <li class="text-styling-option">
+                <button><i class="bi bi-type-bold" data-fontStyle="bold"></i></button>
                 </li>
 
-                <li class="text_Settings_Tools_Item" title="Italic Text">
-                <button><i class="bi bi-type-italic"></i></button>
+                <li class="text-styling-option">
+                <button><i class="bi bi-type-italic" data-fontStyle="italic"></i></button>
                 </li>
 
-                <li class="text_Settings_Tools_Item" title="Underline">
-                <button><i class="bi bi-type-underline"></i></button>
+                <li class="text-styling-option">
+                <button><i class="bi bi-type-underline" data-fontStyle="underline"></i></button>
                 </li>
 
                 <hr />
 
-                <li id="font-colors-loader" class="text_Settings_Tools_Item">
+                <li id="font-colors-loader" class="text-styling-option">
                 <button><i class="bi bi-paint-bucket"></i></button>
                 <div id="colors-dropdown" class="popup-selector hidden">
                     <div>${this.renderFontColorList()}</div>
@@ -146,17 +151,17 @@ export class TextEditorToolbarComponent {
 
                 <hr />
 
-                <li class="text_Settings_Tools_Item" title="Align Left">
-                <button><i class="bi bi-justify-left"></i></button>
+                <li class="text-styling-option">
+                <button><i class="bi bi-justify-left" data-fontStyle="justifyLeft"></i></button>
                 </li>
 
-                <li class="text_Settings_Tools_Ite m" title="Align Center">
-                <button><i class="bi bi-justify"></i></button>
+                <li class="text-styling-option">
+                <button><i class="bi bi-justify" data-fontStyle="justifycenter"></i></button>
 
                 </li>
 
-                <li class="text_Settings_Tools_Item" title="Align Right">
-                <button><i class="bi bi-justify-right"></i></button>
+                <li class="text-styling-option">
+                <button><i class="bi bi-justify-right" data-fontStyle="justifyright"></i></button>
                 </li>
 
                 <li id="line-spacing-loader" title="Line Spacing">

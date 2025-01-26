@@ -43,6 +43,11 @@ class ToolbarService {
     this.activeDropdownElementId = elementID;
   }
 
+  setTextStyling(pointer) {
+    const styling = pointer.target.dataset.fontstyle;
+    document.execCommand(styling, false, "");
+  }
+
   setDocumentFont(pointer) {
     const fontSelection = pointer.target.style.fontFamily.replace(/['"]/g, "");
 
