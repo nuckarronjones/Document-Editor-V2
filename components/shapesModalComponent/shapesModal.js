@@ -1,5 +1,5 @@
-import { modalService } from "../../services/modal-service.js";
-import { eventListenerService } from "../../services/event-service.js";
+import { modalService } from "../../services/modalService.js";
+import { eventListenerService } from "../../services/eventService.js";
 
 export class ShapesModal {
   constructor() {

@@ -1,5 +1,5 @@
-import { eventListenerService } from "../../../services/event-service.js";
-import { toolbarService } from "../../../services/toolbar-service.js";
+import { eventListenerService } from "../../../services/eventService.js";
+import { toolbarService } from "../../../services/toolbarService.js";
 
 export class TextEditorToolbarComponent {
   constructor() {

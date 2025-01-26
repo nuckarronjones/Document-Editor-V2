@@ -1,7 +1,7 @@
-import { NavToolbarComponent } from "./components/navToolbarComponent/nav-toolbar.js";
+import { NavToolbarComponent } from "./components/navToolbarComponent/navToolbar.js";
 import { DocumentComponent } from "./components/documentComponent/document.js";
-import { eventListenerService } from "./services/event-service.js";
-import { ShapesModal } from "./components/shapesModalComponent/shapes-modal.js";
+import { eventListenerService } from "./services/eventService.js";
+import { ShapesModal } from "./components/shapesModalComponent/shapesModal.js";
 
 class App {
   constructor() {
