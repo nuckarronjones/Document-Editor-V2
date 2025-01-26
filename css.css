@@ -141,7 +141,7 @@ button:not(#logo):hover {
   z-index: 4;
   transform: translate(-50%, -50%);
 }
-#modal_Exit_BTN {
+#shapes-modal-close-button {
   position: absolute;
   top: 0;
   right: 0;
