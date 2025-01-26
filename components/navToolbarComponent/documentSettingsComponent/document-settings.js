@@ -1,10 +1,12 @@
 import { eventListenerService } from "../../../services/event-service.js";
 import { toolbarService } from "../../../services/toolbar-service.js";
+import { modalService } from "../../../services/modal-service.js";
 
 export class DocumentSettingsComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
     this.toolbarService = toolbarService;
+    this.modalService = modalService;
   }
 
   events = [
@@ -17,6 +19,11 @@ export class DocumentSettingsComponent {
       id: "insert-options",
       eventType: "click",
       action: () => this.toolbarService.renderDropdown("insert-options-dropdown"),
+    },
+    {
+      id: "toggle-shapes-modal",
+      eventType: "click",
+      action: () => this.modalService.setModalSubject("ShapesModal"),
     },
   ];
 
@@ -63,7 +70,7 @@ export class DocumentSettingsComponent {
                     Insert
                     <div id="insert-options-dropdown" class="popup-selector hidden">
                         <ul class="noBullets hover">
-                        <li>Shapes<i class="bi bi-star"></i></li>
+                        <li id="toggle-shapes-modal">Shapes<i class="bi bi-star"></i></li>
                         </ul>
                     </div>
                     </li>
