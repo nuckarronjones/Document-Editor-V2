@@ -22,7 +22,7 @@ export class TextEditorToolbarComponent {
   renderFontSizeList() {
     let htmlFormattedList = [];
 
-    for (let i = 3; i < 76; i++) {
+    for (let i = 12; i < 76; i++) {
       htmlFormattedList.push(
         `<li class='dropdown-size-list'> ${i} &emsp;</li>`
       );
@@ -90,6 +90,7 @@ export class TextEditorToolbarComponent {
       eventType: "click",
       action: (pointer) => this.toolbarService.setDocumentLineSpacing(pointer),
     },
+
   ];
 
   render() {
