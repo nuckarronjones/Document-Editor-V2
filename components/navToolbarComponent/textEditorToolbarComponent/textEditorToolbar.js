@@ -42,6 +42,18 @@ export class TextEditorToolbarComponent {
     return htmlFormattedList.join("");
   }
 
+  renderSpacingList() {
+    const spacingOptions = this.toolbarService.LINE_SPACINGS;
+    let htmlFormattedList = [];
+
+    Object.keys(spacingOptions).forEach((key) => {
+      htmlFormattedList.push(
+        `<li class="dropwown-spacing-option" data-spacing="${spacingOptions[key]}" >${key}</li>`
+      );
+    });
+    return htmlFormattedList.join("");
+  }
+
   events = [
     {
       id: "font-loader",
@@ -72,6 +84,11 @@ export class TextEditorToolbarComponent {
       class: "dropdown-size-list",
       eventType: "click",
       action: (pointer) => this.toolbarService.setDocumentFontSize(pointer),
+    },
+    {
+      class: "dropwown-spacing-option",
+      eventType: "click",
+      action: (pointer) => this.toolbarService.setDocumentLineSpacing(pointer),
     },
   ];
 
@@ -145,10 +162,7 @@ export class TextEditorToolbarComponent {
                 <button><i class="bi bi-arrows-expand"></i></button>
                 <div id="line-spacing-dropdown" class="popup-selector hidden">
                     <ul class="noBullets hover">
-                    <li>Single</li>
-                    <li>1.15</li>
-                    <li>1.5</li>
-                    <li>Double</li>
+                      ${this.renderSpacingList()}
                     </ul>
                 </div>
                 </li>

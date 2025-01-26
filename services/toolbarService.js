@@ -28,6 +28,13 @@ class ToolbarService {
     ["white", "#FFFFFF"],
   ];
 
+  LINE_SPACINGS = {
+      "Single": "1",
+      "1.15": "1.15",
+      "1.5": "1.5",
+      "Double": "2"
+  }
+
   get documentElement() {
     return document.getElementById("main-document");
   }
@@ -50,6 +57,12 @@ class ToolbarService {
     
     document.getElementById("font-size-preview").innerText = fontSize;
     this.documentElement.style.fontSize = fontSize;
+  }
+
+  setDocumentLineSpacing(pointer){
+    const spacing = pointer.target.dataset.spacing;
+
+    this.documentElement.style.lineHeight = spacing;
   }
 
   renderDropdown(targetId) {
