@@ -105,8 +105,22 @@ class ToolbarService {
     document.body.removeChild(fileDownload);
   }
 
-  printDocument(){
-    const documentContents = document.getElementById("text_Container").innerHTML;
+  insertShape(pointer, closeModal) {
+    const imageURL = pointer.srcElement.src;
+    const newDiv = document.createElement("img");
+
+    newDiv.style.height = "50px";
+    newDiv.style.width = "50px";
+    newDiv.src = imageURL;
+
+    this.documentElement.appendChild(newDiv);
+
+    closeModal;
+  }
+
+  printDocument() {
+    const documentContents =
+      document.getElementById("text_Container").innerHTML;
     const windowedDocument = window.open("", "", "height=1375p, width=1063");
     
     windowedDocument.document.write("<html>");
