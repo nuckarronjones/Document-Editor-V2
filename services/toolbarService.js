@@ -64,6 +64,13 @@ class ToolbarService {
     this.documentElement.style.fontSize = fontSize;
   }
 
+  setFontColor(pointer){
+    const fontColor = pointer.target.dataset.color;
+
+    document.execCommand("styleWithCSS", false, true);
+    document.execCommand("foreColor", false, fontColor);
+  }
+
   setDocumentLineSpacing(pointer){
     const spacing = pointer.target.dataset.spacing;
 

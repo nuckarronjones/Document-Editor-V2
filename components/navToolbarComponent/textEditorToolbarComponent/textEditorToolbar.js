@@ -36,7 +36,12 @@ export class TextEditorToolbarComponent {
 
     for (let i = 0; i < colors.length; i++) {
       htmlFormattedList.push(
-        `<button style='width: 20px; height:20px; background-color:${colors[i][0]}' class='color_Box'></button>`
+        ` <button 
+            style='width: 20px; height:20px; background-color:${colors[i][0]}' 
+            class='dropdown-color-option' 
+            data-color="${colors[i][0]}">
+          </button>
+        `
       );
     }
     return htmlFormattedList.join("");
@@ -94,6 +99,11 @@ export class TextEditorToolbarComponent {
       class: "text-styling-option",
       eventType: "click",
       action: (pointer) => this.toolbarService.setTextStyling(pointer),
+    },
+    {
+      class: "dropdown-color-option",
+      eventType: "click",
+      action: (pointer) => this.toolbarService.setFontColor(pointer),
     },
 
   ];
