@@ -1,6 +1,6 @@
-import { eventListenerService } from "../../../services/eventService.js";
-import { toolbarService } from "../../../services/toolbarService.js";
-import { modalService } from "../../../services/modalService.js";
+import { eventListenerService } from "../../../../services/eventService.js";
+import { toolbarService } from "../../../../services/toolbarService.js";
+import { modalService } from "../../../../services/modalService.js";
 
 export class DocumentSettingsComponent {
   constructor() {
