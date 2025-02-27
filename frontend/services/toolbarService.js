@@ -85,7 +85,7 @@ class ToolbarService {
       "<head><meta charset='utf-8'><title>Export HTML to Word Document with JavaScript</title></head><body>";
     const footer = "</body></html>";
     const sourceHTML =
-      header + document.getElementById("text_Container").innerHTML + footer;
+      header + document.getElementById("textContainer").innerHTML + footer;
 
     const source =
       "data:application/vnd.ms-word;charset=utf-8," +
@@ -120,7 +120,7 @@ class ToolbarService {
 
   printDocument() {
     const documentContents =
-      document.getElementById("text_Container").innerHTML;
+      document.getElementById("textContainer").innerHTML;
     const windowedDocument = window.open("", "", "height=1375p, width=1063");
     
     windowedDocument.document.write("<html>");

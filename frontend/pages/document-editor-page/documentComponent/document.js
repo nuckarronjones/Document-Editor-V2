@@ -7,7 +7,7 @@ export class DocumentComponent {
   
   render() {
     return `
-        <div id="text_Container">
+        <div id="textContainer">
             <div
                 id="main-document"
                 contenteditable

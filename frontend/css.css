@@ -241,7 +241,7 @@ button:not(#logo):hover {
   border: 1px solid lightgrey;
 }
 
-#text_Container {
+#textContainer {
   margin-top: 8rem;
 
   padding-top: 5rem;
