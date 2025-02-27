@@ -31,10 +31,15 @@ export class DocumentSettingsComponent {
       action: () => this.toolbarService.printDocument(),
     },
     {
+      id: "save-button",
+      eventType: "click",
+      action: () => this.toolbarService.saveDocument(),
+    },
+    {
       id: "toggle-shapes-modal",
       eventType: "click",
       action: () => this.modalService.setModalSubject("ShapesModal"),
-    }
+    },
   ];
 
   renderDropdown(targetId) {
@@ -70,8 +75,9 @@ export class DocumentSettingsComponent {
                     File
                     <div id="file-options-dropdown" class="popup-selector hidden">
                         <ul class="noBullets hover">
-                        <li id="export-button">Download (.docx)</li>
-                        <li id="print-button">Print<i class="bi bi-printer"></i></li>
+                        <li id="save-button"><i class="bi bi-save"></i>Save</li>
+                        <li id="export-button"><i class="bi bi-download"></i>Download</li>
+                        <li id="print-button"><i class="bi bi-printer"></i>Print</li>
                         </ul>
                     </div>
                     </li>
@@ -80,7 +86,7 @@ export class DocumentSettingsComponent {
                     Insert
                     <div id="insert-options-dropdown" class="popup-selector hidden">
                         <ul class="noBullets hover">
-                        <li id="toggle-shapes-modal">Shapes<i class="bi bi-star"></i></li>
+                        <li id="toggle-shapes-modal"><i class="bi bi-star"></i>Shapes</li>
                         </ul>
                     </div>
                     </li>
