@@ -1,4 +1,10 @@
+import { documentServiceApi } from "../../../services/api/documentServiceApi.js";
+
 export class DocumentComponent {
+  constructor(){
+    this.documentServiceApi = documentServiceApi;
+  }
+  
   render() {
     return `
         <div id="text_Container">
@@ -12,8 +18,11 @@ export class DocumentComponent {
                 font-size: 15pt;
                 position: relative;
                 "
-            ></div>
+            >
+            ${this.documentServiceApi.documentContent}
+            </div>
         </div>
     `;
   }
+
 }
