@@ -1,8 +1,13 @@
 # Document Editor SPA
 
+## Demo
+https://flow-document-editor.netlify.app/
+
 ## Overview
 
-This project is a refactored version of my older document editor application, now implemented with a modular JavaScript approach. Inspired by the core principles of Angular, I restructured the application as a single-page application (SPA) to dive deeper into fundamental JavaScript concepts.
+This project is a refactored version of my older document editor application, now implemented with a modular JavaScript approach. Inspired by the core principles of Angular, I restructured the application as a single-page application (SPA) to dive deeper into fundamental JavaScript concepts. Original repository here: https://github.com/nuckarronjones/Document-Editor. 
+
+Much effort was spent refactoring and introducing better coding practices into this application. This demonstrates my ability to analyze and improve older code by enhancing maintainability, optimizing performance, and applying modern best practices.
 
 ## Key Features
 
