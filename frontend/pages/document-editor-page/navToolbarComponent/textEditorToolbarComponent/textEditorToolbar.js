@@ -1,14 +1,21 @@
 import { eventListenerService } from "../../../../services/eventService.js";
 import { toolbarService } from "../../../../services/toolbarService.js";
 
+import { COLORS } from "../../../../data/documentData.js";
+import { LINE_SPACINGS } from "../../../../data/documentData.js";
+import { FONTLIST } from "../../../../data/documentData.js";
+
 export class TextEditorToolbarComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
     this.toolbarService = toolbarService;
+    this.fontList = FONTLIST;
+    this.lineSpacings = LINE_SPACINGS;
+    this.colors = COLORS;
   }
 
   renderFontList() {
-    const fontList = this.toolbarService.FONTLIST;
+    const fontList = this.fontList;
     let htmlFormattedList = [];
 
     for (let i = 0; i < fontList.length; i++) {
@@ -31,7 +38,7 @@ export class TextEditorToolbarComponent {
   }
 
   renderFontColorList() {
-    const colors = this.toolbarService.COLORS;
+    const colors = this.colors;
     let htmlFormattedList = [];
 
     for (let i = 0; i < colors.length; i++) {
@@ -48,7 +55,7 @@ export class TextEditorToolbarComponent {
   }
 
   renderSpacingList() {
-    const spacingOptions = this.toolbarService.LINE_SPACINGS;
+    const spacingOptions = this.lineSpacings;
     let htmlFormattedList = [];
 
     Object.keys(spacingOptions).forEach((key) => {
