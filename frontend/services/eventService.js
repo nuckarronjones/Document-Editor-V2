@@ -34,6 +34,10 @@ class EventListenerService {
       }
     });
   }
+
+  emptyEventListeners(){
+    this.events = [];
+  }
 }
 
 export const eventListenerService = new EventListenerService();
