@@ -2,7 +2,7 @@ class ToolbarService {
   constructor() {}
   activeDropdownElementId = null;
   
-  get documentElement() {
+  documentElement() {
     return document.getElementById("main-document");
   }
 
@@ -21,14 +21,14 @@ class ToolbarService {
     document.getElementById(
       "font-option-preview"
     ).innerHTML = `<span style='font-family: ${fontSelection};'>${fontSelection}</span>`;
-    this.documentElement.style.fontFamily = fontSelection;
+    this.documentElement().style.fontFamily = fontSelection;
   }
 
   setDocumentFontSize(pointer) {
     const fontSize = `${parseInt(pointer.target.innerHTML)}pt`;
     
     document.getElementById("font-size-preview").innerText = fontSize;
-    this.documentElement.style.fontSize = fontSize;
+    this.documentElement().style.fontSize = fontSize;
   }
 
   setFontColor(pointer){
@@ -41,7 +41,7 @@ class ToolbarService {
   setDocumentLineSpacing(pointer){
     const spacing = pointer.target.dataset.spacing;
 
-    this.documentElement.style.lineHeight = spacing;
+    this.documentElement().style.lineHeight = spacing;
   }
 
   exportDocument() {
@@ -80,7 +80,7 @@ class ToolbarService {
     newDiv.style.width = "50px";
     newDiv.src = imageURL;
 
-    this.documentElement.appendChild(newDiv);
+    this.documentElement().appendChild(newDiv);
 
     closeModal;
   }
