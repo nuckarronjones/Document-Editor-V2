@@ -1,12 +1,14 @@
 import { eventListenerService } from "../../../../services/eventService.js";
 import { toolbarService } from "../../../../services/toolbarService.js";
 import { modalService } from "../../../../services/modalService.js";
+import { routingService } from "../../../../services/routingService.js";
 
 export class DocumentSettingsComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
     this.toolbarService = toolbarService;
     this.modalService = modalService;
+    this.routingService = routingService;
   }
 
   events = [
@@ -40,6 +42,11 @@ export class DocumentSettingsComponent {
       eventType: "click",
       action: () => this.modalService.setModalSubject("ShapesModal"),
     },
+    {
+      id: "home-button",
+      eventType: "click",
+      action: () => this.routingService.setRoute("/"),
+    },
   ];
 
   renderDropdown(targetId) {
@@ -60,8 +67,8 @@ export class DocumentSettingsComponent {
     return `
            <div id="name_Toolbar" class="toolbar">
                 <ul class="text_Settings_Tools">
-                    <li>
-                    <i id="logo" class="bi bi-book"></i>
+                    <li 
+                      <button id="home-button"><i id="logo" class="bi bi-book"></i></button>
                     </li>
                     <li>
                     <input id="documentName" type="" name="" value="Document Title" />
