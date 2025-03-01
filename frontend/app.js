@@ -1,6 +1,6 @@
 import { ShapesModal } from "./pages/document-editor-page/shapesModalComponent/shapesModal.js";
-import { UserDocumentsComponent } from "./pages/document-editor-page/documentEditorComponent.js";
-import { DocumentEditorComponent } from "./pages/user-documents-page/userDocumentsComponent/userDocumentsComponent.js";
+import { UserDocumentsComponent } from "./pages/user-documents-page/userDocumentsComponent/userDocumentsComponent.js";
+import { DocumentEditorComponent } from "./pages/document-editor-page/documentEditorComponent.js";
 
 import { routingService } from "./services/routingService.js";
 import { eventListenerService } from "./services/eventService.js";
