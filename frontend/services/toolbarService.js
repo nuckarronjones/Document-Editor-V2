@@ -8,7 +8,7 @@ class ToolbarService {
   activeDropdownElementId = null;
   
   documentElement() {
-    return document.getElementById("main-document");
+    return document.getElementById("mainDocument");
   }
 
   _setActiveDropdown(elementID) {

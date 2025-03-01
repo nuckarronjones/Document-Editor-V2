@@ -76,21 +76,7 @@ input {
   padding: 2px;
   color: grey;
 }
-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: none;
-  border-radius: 5px;
 
-  font-size: 11pt;
-}
-button:not(#logo):hover {
-  background-color: lightgrey;
-  transform: scale(1.1);
-}
 .hidden {
   visibility: hidden;
 }
@@ -110,7 +96,7 @@ button:not(#logo):hover {
 }
 
 /********************/
-#shapes_Modal {
+#shapesModal {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,7 +111,7 @@ button:not(#logo):hover {
 
   opacity: 0.5;
 }
-#modal_Content {
+#modalContent {
   border-radius: 3px;
   position: absolute;
   justify-content: center;
@@ -141,7 +127,7 @@ button:not(#logo):hover {
   z-index: 4;
   transform: translate(-50%, -50%);
 }
-#shapes-modal-close-button {
+#modalCloseBtn {
   position: absolute;
   top: 0;
   right: 0;
@@ -155,7 +141,7 @@ button:not(#logo):hover {
   border-radius: 3px;
   border: 2px solid lightgrey;
 }
-#shapes_Selection > li {
+#shapesSelection > li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,17 +151,17 @@ button:not(#logo):hover {
   height: 100px;
   overflow: auto;
 }
-#shapes_Selection > li > img {
+#shapesSelection > li > img {
   vertical-align: middle;
 }
 
-#shapes_Selection > li:hover {
+#shapesSelection > li:hover {
   background-color: lightgrey;
   border-radius: 3px;
   transform: scale(1.1);
 }
 
-#toolbar-container {
+#toolbarContainer {
   position: fixed;
   top: 0;
   width: 100vw;
@@ -190,7 +176,7 @@ button:not(#logo):hover {
   margin-left: -0.3rem;
 }
 
-#text_Settings {
+#textSettings {
   height: auto;
   display: flex;
   justify-content: center;
@@ -199,12 +185,12 @@ button:not(#logo):hover {
   margin-bottom: 1rem;
   font-size: 10pt;
 }
-.text_Settings_Tools {
+.textSettings {
   list-style-type: none;
   display: inline;
   height: auto;
 }
-.text_Settings_Tools > li {
+.textSettings > li {
   display: inline-block;
   border-radius: 3px;
   width: auto;
@@ -213,7 +199,7 @@ button:not(#logo):hover {
 
   text-align: center;
 }
-.popup-selector {
+.popupMenuSelection {
   width: auto;
   height: auto;
   background-color: white;
@@ -226,20 +212,18 @@ button:not(#logo):hover {
   overflow-y: overlay;
   overflow-x: hidden;
 }
-.popup-selector li {
+
+.popupMenuSelection li {
   padding: 0.5rem;
 }
+
 #colors-dropdown > div {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
   padding: 1rem;
 }
-.color_Box {
-  width: 20px;
-  height: 20px;
-  border: 1px solid lightgrey;
-}
+
 
 #textContainer {
   margin-top: 8rem;
@@ -252,7 +236,8 @@ button:not(#logo):hover {
   justify-content: center;
   display: fixed;
 }
-#main-document {
+
+#mainDocument {
   box-sizing: border-box;
   background-color: white;
   width: 8.5in;
