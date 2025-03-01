@@ -1,9 +1,12 @@
 import { eventListenerService } from "../../../services/eventService.js";
 import { routingService } from "../../../services/routingService.js";
+import { documentPreferencesService } from "../../../services/documentPreferencesService.js";
+import { generateDocumentId } from "../../../funcions/generateDocumentId.js";
 
 export class UserDocumentsComponent{
   constructor() {
     this.eventListenerService = eventListenerService;
+    this.documentPreferencesService = documentPreferencesService;
     this.routingService = routingService;
   }
 
@@ -11,7 +14,10 @@ export class UserDocumentsComponent{
     {
       id: "new-document-btn",
       eventType: "click",
-      action: () => this.routingService.createNewDocument(),
+      action: () => {
+        this.routingService.setRoute("/editor");
+        this.documentPreferencesService.documentId = generateDocumentId();
+      },
     }
   ];
 
