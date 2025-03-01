@@ -1,10 +1,6 @@
 class RoutingService {
   constructor() {}
 
-  createNewDocument() {
-    this.setRoute("/editor");
-  }
-
   setRoute(route) {
     window.history.pushState("", "", route);
   }
