@@ -1,15 +1,34 @@
-import { DocumentComponent } from "../../document-editor-page/documentComponent/document.js";
-import { NavToolbarComponent } from "../../document-editor-page/navToolbarComponent/navToolbar.js";
-export class DocumentEditorComponent {
+import { eventListenerService } from "../../../services/eventService.js";
+import { routingService } from "../../../services/routingService.js";
+
+export class UserDocumentsComponent{
   constructor() {
-    this.documentComponent = new DocumentComponent();
-    this.navbarComponent = new NavToolbarComponent();
+    this.eventListenerService = eventListenerService;
+    this.routingService = routingService;
+  }
+
+  events = [
+    {
+      id: "new-document-btn",
+      eventType: "click",
+      action: () => this.routingService.createNewDocument(),
+    }
+  ];
+
+  _pushEvents(){
+    this.eventListenerService.events.push(...this.events);
   }
 
   render() {
+    this._pushEvents();
+
     return `
-         ${this.navbarComponent.render()}
-         ${this.documentComponent.render()}
-     `;
+        <div class="container">
+            <h1> My Documents </h1>
+            <div id="userDocumentsContainer">
+              <button id="new-document-btn">Create New Document + </button>
+            </div>
+        </div>
+        `;
   }
 }
