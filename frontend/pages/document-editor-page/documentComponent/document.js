@@ -1,8 +1,13 @@
-import { documentServiceApi } from "../../../services/api/documentServiceApi.js";
+import { documentPreferencesService } from "../../../services/documentPreferencesService.js";
 
 export class DocumentComponent {
   constructor(){
-    this.documentServiceApi = documentServiceApi;
+    this.documentPreferencesService = documentPreferencesService;
+
+    //Initialize this components values using document preferences service
+    this.fontPreference = this.documentPreferencesService.preferences.font;
+    this.lineSpacing = this.documentPreferencesService.preferences.lineSpacing;
+    this.fontSize = this.documentPreferencesService.preferences.fontSize;
   }
   
   render() {
@@ -12,14 +17,14 @@ export class DocumentComponent {
                 id="main-document"
                 contenteditable
                 style="
-                font-family: Times new roman;
-                line-spacing: 1.15;
+                font-family: ${this.fontPreference};
+                line-spacing: ${this.lineSpacing};
                 line-height: 1;
-                font-size: 15pt;
+                font-size: ${this.fontSize }pt;
                 position: relative;
                 "
             >
-            ${this.documentServiceApi.documentContent}
+             ${this.documentPreferencesService.getDocumentContent()}
             </div>
         </div>
     `;

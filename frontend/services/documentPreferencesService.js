@@ -9,8 +9,13 @@ class DocumentPreferencesService {
   }
   
   getDocumentContent() {
-    return document.getElementById("textContainer").innerHTML;
+    const textContainer = document.getElementById("textContainer");
+    if (textContainer) {
+      return textContainer.innerHTML;
+    }
+    return "";
   }
+  
 
   getDocumentTitle() {
     return document.getElementById("documentName").value;
