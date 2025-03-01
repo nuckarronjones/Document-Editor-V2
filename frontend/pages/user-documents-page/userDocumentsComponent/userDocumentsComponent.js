@@ -3,7 +3,7 @@ import { routingService } from "../../../services/routingService.js";
 import { documentPreferencesService } from "../../../services/documentPreferencesService.js";
 import { generateDocumentId } from "../../../funcions/generateDocumentId.js";
 
-export class UserDocumentsComponent{
+export class UserDocumentsPageComponent{
   constructor() {
     this.eventListenerService = eventListenerService;
     this.documentPreferencesService = documentPreferencesService;

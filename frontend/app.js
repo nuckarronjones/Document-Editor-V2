@@ -1,13 +1,13 @@
 import { ShapesModal } from "./pages/document-editor-page/shapesModalComponent/shapesModal.js";
-import { UserDocumentsComponent } from "./pages/user-documents-page/userDocumentsComponent/userDocumentsComponent.js";
-import { DocumentEditorComponent } from "./pages/document-editor-page/documentEditorComponent.js";
+import { UserDocumentsPageComponent } from "./pages/user-documents-page/userDocumentsComponent/userDocumentsComponent.js";
+import { DocumentEditorPageComponent } from "./pages/document-editor-page/documentEditorComponent.js";
 
 import { routingService } from "./services/routingService.js";
 import { eventListenerService } from "./services/eventService.js";
 class App {
   constructor() {
-    this.documentEditorComponent = new DocumentEditorComponent();
-    this.userDocumentsComponent = new UserDocumentsComponent();
+    this.documentEditorPageComponent = new DocumentEditorPageComponent();
+    this.userDocumentsPageComponent = new UserDocumentsPageComponent();
     this.shapesModal = new ShapesModal();
 
     this.eventListenerService = eventListenerService;
@@ -26,7 +26,7 @@ class App {
     const appElement = document.getElementById("app");
 
     const html = `
-      ${this.userDocumentsComponent.render()}
+      ${this.userDocumentsPageComponent.render()}
     `;
 
     //Initialize page content first, then listeners. Must be in this order to attach listeners to html
@@ -41,11 +41,11 @@ class App {
 
     if (url.includes("/editor")) {
       appElement.innerHTML = `
-        ${this.documentEditorComponent.render()}
+        ${this.documentEditorPageComponent.render()}
      `;
     } else {
       appElement.innerHTML = `
-      ${this.userDocumentsComponent.render()}
+      ${this.userDocumentsPageComponent.render()}
     `;
     }
 
