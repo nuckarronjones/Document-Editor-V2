@@ -29,8 +29,10 @@
   background: #bfbfbf;
   border-radius: 10px;
 }
-/*******************/
 
+/*
+  GLOBAL
+*/
 * {
   padding: 0;
   margin: 0;
@@ -95,7 +97,51 @@ input {
   transition: all 0.2s ease-in-out;
 }
 
-/********************/
+.popupMenuSelection {
+  width: auto;
+  height: auto;
+  background-color: white;
+  box-shadow: 4px 4px 4px 4px lightgray;
+  position: absolute;
+  z-index: 2;
+  font-size: 10pt;
+
+  max-height: 20rem;
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+
+.popupMenuSelection li {
+  padding: 0.5rem;
+}
+
+#textSettings {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-top: 1px solid lightgrey;
+  margin-bottom: 1rem;
+  font-size: 10pt;
+}
+.textSettings {
+  list-style-type: none;
+  display: inline;
+  height: auto;
+}
+.textSettings > li {
+  display: inline-block;
+  border-radius: 3px;
+  width: auto;
+  margin-left: 15px;
+  margin-right: 15px;
+
+  text-align: center;
+}
+
+/*
+  SHAPES MODAL COMPONENT
+*/
 #shapesModal {
   display: flex;
   justify-content: center;
@@ -133,6 +179,7 @@ input {
   right: 0;
   margin: 1rem;
 }
+
 .iconlist {
   max-height: 30vh;
   max-width: 35vw;
@@ -141,6 +188,7 @@ input {
   border-radius: 3px;
   border: 2px solid lightgrey;
 }
+
 #shapesSelection > li {
   display: flex;
   justify-content: center;
@@ -161,6 +209,9 @@ input {
   transform: scale(1.1);
 }
 
+/*
+  NAVTOOLBAR COMPONENT
+*/
 #toolbarContainer {
   position: fixed;
   top: 0;
@@ -171,52 +222,19 @@ input {
   box-shadow: 0 4px 2px -2px lightgray;
   z-index: 2; /*overlay ontop of document */
 }
+
+/*
+  DOCUMENT SETTINGS COMPONENT
+*/
+
 #logo {
   font-size: 15pt;
   margin-left: -0.3rem;
 }
 
-#textSettings {
-  height: auto;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  border-top: 1px solid lightgrey;
-  margin-bottom: 1rem;
-  font-size: 10pt;
-}
-.textSettings {
-  list-style-type: none;
-  display: inline;
-  height: auto;
-}
-.textSettings > li {
-  display: inline-block;
-  border-radius: 3px;
-  width: auto;
-  margin-left: 15px;
-  margin-right: 15px;
-
-  text-align: center;
-}
-.popupMenuSelection {
-  width: auto;
-  height: auto;
-  background-color: white;
-  box-shadow: 4px 4px 4px 4px lightgray;
-  position: absolute;
-  z-index: 2;
-  font-size: 10pt;
-
-  max-height: 20rem;
-  overflow-y: overlay;
-  overflow-x: hidden;
-}
-
-.popupMenuSelection li {
-  padding: 0.5rem;
-}
-
+/*
+  TEXT EDITOR TOOLBAR COMPONENT
+*/
 #colors-dropdown > div {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -224,6 +242,9 @@ input {
   padding: 1rem;
 }
 
+/*
+  DOCUMENT COMPONENT
+*/
 
 #textContainer {
   margin-top: 8rem;
