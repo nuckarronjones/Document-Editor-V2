@@ -56,6 +56,29 @@ hr {
   background-color: lightgrey;
   border: none;
 }
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
 select {
   border: none;
   font-size: 11pt;
@@ -157,6 +180,7 @@ input {
 
   opacity: 0.5;
 }
+
 #modalContent {
   border-radius: 3px;
   position: absolute;
@@ -173,6 +197,7 @@ input {
   z-index: 4;
   transform: translate(-50%, -50%);
 }
+
 #modalCloseBtn {
   position: absolute;
   top: 0;
@@ -226,7 +251,6 @@ input {
 /*
   DOCUMENT SETTINGS COMPONENT
 */
-
 #logo {
   font-size: 15pt;
   margin-left: -0.3rem;
