@@ -14,9 +14,9 @@ class App {
     this.routingService = routingService;
 
     //Bind this context, so we dont lose it when passed in as a callback
-    this.onRefreshCallback = this.onRefreshCallback.bind(this);
+    this.onRouteChange = this.onRouteChange.bind(this);
     //Detect refresh, and use our callback to re-initialize page contents/listeners
-    this.routingService.detectRefresh(this.onRefreshCallback);
+    this.routingService.detectRefresh(this.onRouteChange);
 
     //Boostrap app as soon as its constructed
     this.bootstrap();
@@ -34,7 +34,7 @@ class App {
     this.eventListenerService.initializeEventListeners();
   }
 
-  onRefreshCallback(url) {
+  onRouteChange(url) {
     const appElement = document.getElementById("app");
 
     this.eventListenerService.emptyEventListeners();
