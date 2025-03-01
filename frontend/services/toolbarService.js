@@ -1,5 +1,10 @@
+import { documentPreferencesService } from "./documentPreferencesService.js";
+
 class ToolbarService {
-  constructor() {}
+  constructor() {
+    this.documentPreferencesService = documentPreferencesService;
+  }
+
   activeDropdownElementId = null;
   
   documentElement() {
@@ -17,7 +22,11 @@ class ToolbarService {
 
   setDocumentFont(pointer) {
     const fontSelection = pointer.target.style.fontFamily.replace(/['"]/g, "");
+    
+    //Update current user preference when user saves
+    this.documentPreferencesService.preferences.font = fontSelection;
 
+    //Alter current document element and dropdown to reflect this change
     document.getElementById(
       "font-option-preview"
     ).innerHTML = `<span style='font-family: ${fontSelection};'>${fontSelection}</span>`;
@@ -25,10 +34,15 @@ class ToolbarService {
   }
 
   setDocumentFontSize(pointer) {
-    const fontSize = `${parseInt(pointer.target.innerHTML)}pt`;
+    const fontSize = parseInt(pointer.target.innerHTML);
+    const fontSizeFormatted = `${fontSize}pt`;
+
+    //Update current user preference when user saves
+    this.documentPreferencesService.preferences.fontSize = fontSize;
     
-    document.getElementById("font-size-preview").innerText = fontSize;
-    this.documentElement().style.fontSize = fontSize;
+    //Alter current document element and dropdown to reflect this change
+    document.getElementById("font-size-preview").innerText = fontSizeFormatted;
+    this.documentElement().style.fontSize = fontSizeFormatted;
   }
 
   setFontColor(pointer){
@@ -41,6 +55,10 @@ class ToolbarService {
   setDocumentLineSpacing(pointer){
     const spacing = pointer.target.dataset.spacing;
 
+    //Update current user preference when user saves
+    this.documentPreferencesService.preferences.lineSpacing = spacing;
+
+    //Alter current document element and dropdown to reflect this change
     this.documentElement().style.lineHeight = spacing;
   }
 
