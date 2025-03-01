@@ -124,12 +124,12 @@ export class TextEditorToolbarComponent {
     this._pushEvents();
 
     return `
-        <div id="text_Settings" class="toolbar">
-            <ul class="text_Settings_Tools hover">
+        <div id="textSettings" class="toolbar">
+            <ul class="textSettings hover">
                 <li id="font-loader">
                 <span id="font-option-preview">Times New Roman</span>
                 <i class="bi bi-chevron-compact-down"></i>
-                <div id="font-dropdown" class="popup-selector hidden">
+                <div id="font-dropdown" class="popupMenuSelection hidden">
                     <ul class="noBullets hover">
                     ${this.renderFontList()}
                     </ul>
@@ -141,7 +141,7 @@ export class TextEditorToolbarComponent {
                 <li id="font-size-loader">
                 <span id="fontSizeTitle">15pt</span>
                 <i class="bi bi-chevron-compact-down"></i>
-                <div id="font-size-preview" class="popup-selector hidden">
+                <div id="font-size-preview" class="popupMenuSelection hidden">
                     <ul class="noBullets hover">
                     ${this.renderFontSizeList()}
                     </ul>
@@ -166,7 +166,7 @@ export class TextEditorToolbarComponent {
 
                 <li id="font-colors-loader" class="text-styling-option">
                 <button><i class="bi bi-paint-bucket"></i></button>
-                <div id="colors-dropdown" class="popup-selector hidden">
+                <div id="colors-dropdown" class="popupMenuSelection hidden">
                     <div>${this.renderFontColorList()}</div>
                 </div>
                 </li>
@@ -188,7 +188,7 @@ export class TextEditorToolbarComponent {
 
                 <li id="line-spacing-loader" title="Line Spacing">
                 <button><i class="bi bi-arrows-expand"></i></button>
-                <div id="line-spacing-dropdown" class="popup-selector hidden">
+                <div id="line-spacing-dropdown" class="popupMenuSelection hidden">
                     <ul class="noBullets hover">
                       ${this.renderSpacingList()}
                     </ul>

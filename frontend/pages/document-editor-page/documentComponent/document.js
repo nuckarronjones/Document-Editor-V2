@@ -14,7 +14,7 @@ export class DocumentComponent {
     return `
         <div id="textContainer">
             <div
-                id="main-document"
+                id="mainDocument"
                 contenteditable
                 style="
                 font-family: ${this.fontPreference};

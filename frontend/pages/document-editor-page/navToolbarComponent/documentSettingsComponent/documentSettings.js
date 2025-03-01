@@ -72,7 +72,7 @@ export class DocumentSettingsComponent {
 
     return `
            <div id="name_Toolbar" class="toolbar">
-                <ul class="text_Settings_Tools">
+                <ul class="textSettings">
                     <li 
                       <button id="home-button"><i id="logo" class="bi bi-book"></i></button>
                     </li>
@@ -83,10 +83,10 @@ export class DocumentSettingsComponent {
                 </div>
 
                 <div id="document_Settings" class="toolbar">
-                <ul class="text_Settings_Tools hover">
+                <ul class="textSettings hover">
                     <li id="file-options">
                     File
-                    <div id="file-options-dropdown" class="popup-selector hidden">
+                    <div id="file-options-dropdown" class="popupMenuSelection hidden">
                         <ul class="noBullets hover">
                         <li id="save-button"><i class="bi bi-save"></i>Save</li>
                         <li id="export-button"><i class="bi bi-download"></i>Download</li>
@@ -97,7 +97,7 @@ export class DocumentSettingsComponent {
 
                     <li id="insert-options">
                     Insert
-                    <div id="insert-options-dropdown" class="popup-selector hidden">
+                    <div id="insert-options-dropdown" class="popupMenuSelection hidden">
                         <ul class="noBullets hover">
                         <li id="toggle-shapes-modal"><i class="bi bi-star"></i>Shapes</li>
                         </ul>

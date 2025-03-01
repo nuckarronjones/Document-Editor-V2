@@ -29,8 +29,10 @@
   background: #bfbfbf;
   border-radius: 10px;
 }
-/*******************/
 
+/*
+  GLOBAL
+*/
 * {
   padding: 0;
   margin: 0;
@@ -54,6 +56,29 @@ hr {
   background-color: lightgrey;
   border: none;
 }
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
 select {
   border: none;
   font-size: 11pt;
@@ -76,21 +101,7 @@ input {
   padding: 2px;
   color: grey;
 }
-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: none;
-  border-radius: 5px;
 
-  font-size: 11pt;
-}
-button:not(#logo):hover {
-  background-color: lightgrey;
-  transform: scale(1.1);
-}
 .hidden {
   visibility: hidden;
 }
@@ -109,8 +120,52 @@ button:not(#logo):hover {
   transition: all 0.2s ease-in-out;
 }
 
-/********************/
-#shapes_Modal {
+.popupMenuSelection {
+  width: auto;
+  height: auto;
+  background-color: white;
+  box-shadow: 4px 4px 4px 4px lightgray;
+  position: absolute;
+  z-index: 2;
+  font-size: 10pt;
+
+  max-height: 20rem;
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+
+.popupMenuSelection li {
+  padding: 0.5rem;
+}
+
+#textSettings {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-top: 1px solid lightgrey;
+  margin-bottom: 1rem;
+  font-size: 10pt;
+}
+.textSettings {
+  list-style-type: none;
+  display: inline;
+  height: auto;
+}
+.textSettings > li {
+  display: inline-block;
+  border-radius: 3px;
+  width: auto;
+  margin-left: 15px;
+  margin-right: 15px;
+
+  text-align: center;
+}
+
+/*
+  SHAPES MODAL COMPONENT
+*/
+#shapesModal {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,7 +180,8 @@ button:not(#logo):hover {
 
   opacity: 0.5;
 }
-#modal_Content {
+
+#modalContent {
   border-radius: 3px;
   position: absolute;
   justify-content: center;
@@ -141,12 +197,14 @@ button:not(#logo):hover {
   z-index: 4;
   transform: translate(-50%, -50%);
 }
-#shapes-modal-close-button {
+
+#modalCloseBtn {
   position: absolute;
   top: 0;
   right: 0;
   margin: 1rem;
 }
+
 .iconlist {
   max-height: 30vh;
   max-width: 35vw;
@@ -155,7 +213,8 @@ button:not(#logo):hover {
   border-radius: 3px;
   border: 2px solid lightgrey;
 }
-#shapes_Selection > li {
+
+#shapesSelection > li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,17 +224,20 @@ button:not(#logo):hover {
   height: 100px;
   overflow: auto;
 }
-#shapes_Selection > li > img {
+#shapesSelection > li > img {
   vertical-align: middle;
 }
 
-#shapes_Selection > li:hover {
+#shapesSelection > li:hover {
   background-color: lightgrey;
   border-radius: 3px;
   transform: scale(1.1);
 }
 
-#toolbar-container {
+/*
+  NAVTOOLBAR COMPONENT
+*/
+#toolbarContainer {
   position: fixed;
   top: 0;
   width: 100vw;
@@ -185,61 +247,28 @@ button:not(#logo):hover {
   box-shadow: 0 4px 2px -2px lightgray;
   z-index: 2; /*overlay ontop of document */
 }
+
+/*
+  DOCUMENT SETTINGS COMPONENT
+*/
 #logo {
   font-size: 15pt;
   margin-left: -0.3rem;
 }
 
-#text_Settings {
-  height: auto;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  border-top: 1px solid lightgrey;
-  margin-bottom: 1rem;
-  font-size: 10pt;
-}
-.text_Settings_Tools {
-  list-style-type: none;
-  display: inline;
-  height: auto;
-}
-.text_Settings_Tools > li {
-  display: inline-block;
-  border-radius: 3px;
-  width: auto;
-  margin-left: 15px;
-  margin-right: 15px;
-
-  text-align: center;
-}
-.popup-selector {
-  width: auto;
-  height: auto;
-  background-color: white;
-  box-shadow: 4px 4px 4px 4px lightgray;
-  position: absolute;
-  z-index: 2;
-  font-size: 10pt;
-
-  max-height: 20rem;
-  overflow-y: overlay;
-  overflow-x: hidden;
-}
-.popup-selector li {
-  padding: 0.5rem;
-}
+/*
+  TEXT EDITOR TOOLBAR COMPONENT
+*/
 #colors-dropdown > div {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
   padding: 1rem;
 }
-.color_Box {
-  width: 20px;
-  height: 20px;
-  border: 1px solid lightgrey;
-}
+
+/*
+  DOCUMENT COMPONENT
+*/
 
 #textContainer {
   margin-top: 8rem;
@@ -252,7 +281,8 @@ button:not(#logo):hover {
   justify-content: center;
   display: fixed;
 }
-#main-document {
+
+#mainDocument {
   box-sizing: border-box;
   background-color: white;
   width: 8.5in;
