@@ -9,6 +9,7 @@ export class TextEditorToolbarComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
     this.toolbarService = toolbarService;
+
     this.fontList = FONTLIST;
     this.lineSpacings = LINE_SPACINGS;
     this.colors = COLORS;
@@ -70,47 +71,47 @@ export class TextEditorToolbarComponent {
     {
       id: "font-loader",
       eventType: "click",
-      action: () => this.toolbarService.renderDropdown("font-dropdown"),
+      action: () => this.toolbarService.renderDropdown("font-dropdown")
     },
     {
       id: "font-size-loader",
       eventType: "click",
-      action: () => this.toolbarService.renderDropdown("font-size-preview"),
+      action: () => this.toolbarService.renderDropdown("font-size-preview")
     },
     {
       id: "font-colors-loader",
       eventType: "click",
-      action: () => this.toolbarService.renderDropdown("colors-dropdown"),
+      action: () => this.toolbarService.renderDropdown("colors-dropdown")
     },
     {
       id: "line-spacing-loader",
       eventType: "click",
-      action: () => this.toolbarService.renderDropdown("line-spacing-dropdown"),
+      action: () => this.toolbarService.renderDropdown("line-spacing-dropdown")
     },
     {
       class: "dropdown-font-option",
       eventType: "click",
-      action: (pointer) => this.toolbarService.setDocumentFont(pointer),
+      action: (pointer) => this.toolbarService.setDocumentFont(pointer)
     },
     {
       class: "dropdown-size-list",
       eventType: "click",
-      action: (pointer) => this.toolbarService.setDocumentFontSize(pointer),
+      action: (pointer) => this.toolbarService.setDocumentFontSize(pointer)
     },
     {
       class: "dropwown-spacing-option",
       eventType: "click",
-      action: (pointer) => this.toolbarService.setDocumentLineSpacing(pointer),
+      action: (pointer) => this.toolbarService.setDocumentLineSpacing(pointer)
     },
     {
       class: "text-styling-option",
       eventType: "click",
-      action: (pointer) => this.toolbarService.setTextStyling(pointer),
+      action: (pointer) => this.toolbarService.setTextStyling(pointer)
     },
     {
       class: "dropdown-color-option",
       eventType: "click",
-      action: (pointer) => this.toolbarService.setFontColor(pointer),
+      action: (pointer) => this.toolbarService.setFontColor(pointer)
     },
 
   ];

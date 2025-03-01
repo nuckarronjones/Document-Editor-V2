@@ -2,6 +2,7 @@ import { eventListenerService } from "../../../../services/eventService.js";
 import { toolbarService } from "../../../../services/toolbarService.js";
 import { modalService } from "../../../../services/modalService.js";
 import { routingService } from "../../../../services/routingService.js";
+import { documentServiceApi } from "../../../../services/api/documentServiceApi.js";
 
 export class DocumentSettingsComponent {
   constructor() {
@@ -9,6 +10,7 @@ export class DocumentSettingsComponent {
     this.toolbarService = toolbarService;
     this.modalService = modalService;
     this.routingService = routingService;
+    this.documentServiceApi = documentServiceApi;
   }
 
   events = [
@@ -35,7 +37,7 @@ export class DocumentSettingsComponent {
     {
       id: "save-button",
       eventType: "click",
-      action: () => this.toolbarService.saveDocument(),
+      action: () => this.documentServiceApi.saveDocument(),
     },
     {
       id: "toggle-shapes-modal",
