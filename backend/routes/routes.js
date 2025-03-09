@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 // Path
 const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const frontendPath = path.join(__dirname, "../frontend");
 // Encryption
 const bcrypt = require("bcrypt");
@@ -10,7 +11,7 @@ const jwt = require("jsonwebtoken");
 // Database
 const User = require("../models/userSchema");
 
-router.get("/", (req, res) => {
+router.get("/", () => {
   es.sendFile(path.join(frontendPath, "index.html"));
 });
 
@@ -36,7 +37,7 @@ router.post("/register", async (req, res) => {
     }
   } else {
     res.status(400).json({ message: "Invalid username or password." });
-  };
+  }
 });
 
 router.post("/login", async (req, res) => {
@@ -47,16 +48,23 @@ router.post("/login", async (req, res) => {
   });
 
   if (userAccount) {
-    await bcrypt.compare(password, userAccount.password, (err, success) => {
+    bcrypt.compare(password, userAccount.password, (err, success) => {
       if (success) {
-        res.status(201).json({ message: "Login successful." });
+        const secretKey = process.env.JWT_SECRET;
+
+        if (secretKey) {
+          const token = jwt.sign({ username }, secretKey, { expiresIn: "1h" });
+          res.status(200).json({ token: token, message: "Login successful." });
+        } else {
+          res.status(500).json({ message: "Missing JWT secret token." });
+        }
       } else {
         res.status(400).json({ message: "Password Incorrect" });
       }
     });
   } else {
     res.status(400).json({ message: "Login not found." });
-  };
+  }
 });
 
 module.exports = router;
