@@ -293,3 +293,25 @@ input {
   border: none;
   outline: none;
 }
+
+/*
+  USER LOGIN COMPONENT
+*/
+.loginForm{
+  margin-top:20px;
+
+  label{
+    position: relative;
+    display: block;
+    margin-top:5px;
+  }
+  #loginButton{
+    margin-top:20px;
+  }
+}
+
+.errorText{
+  position: absolute;
+  color:red;
+  display: block;
+}
