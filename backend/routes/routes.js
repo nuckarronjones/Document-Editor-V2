@@ -4,15 +4,15 @@ const router = express.Router();
 // Path
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
-const frontendPath = path.join(__dirname, "../frontend");
+const frontendPath = path.join(__dirname, "../../frontend");
 // Encryption
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 // Database
 const User = require("../models/userSchema");
 
-router.get("/", () => {
-  es.sendFile(path.join(frontendPath, "index.html"));
+router.get("*", (req,res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 router.post("/", (req, res) => {
