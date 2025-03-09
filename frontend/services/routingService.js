@@ -1,16 +1,19 @@
 class RoutingService {
-  constructor() {}
+  constructor() {
+  }
 
   setRoute(route) {
     window.history.pushState("", "", route);
   }
 
-  detectRefresh(callback) {
+  detectURLChange(callback) {
     window.navigation.addEventListener("navigate", (event) => {
       const url = event.destination.url;
+      //Using a callback, as we cannot initialize components here that reply upon this yet to be initialized service
       callback(url);
     });
   }
+
 }
 
 export const routingService = new RoutingService();
