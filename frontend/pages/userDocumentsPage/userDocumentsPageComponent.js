@@ -1,7 +1,7 @@
-import { eventListenerService } from "../../../services/eventService.js";
-import { routingService } from "../../../services/routingService.js";
-import { documentPreferencesService } from "../../../services/documentPreferencesService.js";
-import { generateDocumentId } from "../../../funcions/generateDocumentId.js";
+import { eventListenerService } from "../../services/eventService.js";
+import { routingService } from "../../services/routingService.js";
+import { documentPreferencesService } from "../../services/documentPreferencesService.js";
+import { generateDocumentId } from "../../funcions/generateDocumentId.js";
 
 export class UserDocumentsPageComponent{
   constructor() {
