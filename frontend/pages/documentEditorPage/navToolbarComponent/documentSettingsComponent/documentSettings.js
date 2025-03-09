@@ -47,7 +47,7 @@ export class DocumentSettingsComponent {
     {
       id: "home-button",
       eventType: "click",
-      action: () => this.routingService.setRoute("/"),
+      action: () => this.routingService.setRoute("/allDocuments"),
     },
   ];
 
