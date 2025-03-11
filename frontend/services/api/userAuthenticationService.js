@@ -1,10 +1,13 @@
 class UserAuthenticationService {
   constructor() {}
-  
-  loginState = false;
-  sessionToken = "";
+
+  authenticatedUser = {
+    username: "",
+    jwtToken: ""
+  }
 
   async login(username, password) {
+    let loginState;
     await fetch("/login", {
       method: "POST",
       headers: {
@@ -22,13 +25,27 @@ class UserAuthenticationService {
         return response.json();
       })
       .then((data) => {
-        this.loginState = true
-        this.sessionToken = data.token;
+        loginState = true;
+        this._setUserName(username);
+        this._setJwtToken(data.token);
       })
-      .catch(() => this.loginState = false);
+      .catch(() => loginState = false);
 
-    return this.loginState;
+    return loginState;
   }
+
+  _setJwtToken(token){
+    this.authenticatedUser.jwtToken = token;
+  }
+
+  _setUserName(username){
+    this.authenticatedUser.username = username;
+  }
+
+  getUser(){
+    return this.authenticatedUser;
+  }
+
 }
 
 export const userAuthenticationService = new UserAuthenticationService();

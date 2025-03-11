@@ -26,10 +26,10 @@ export class UserLoginPageComponent {
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
-        this._loginError = !(await this.userAuthenticationService.login(
+        this._loginError = ! await this.userAuthenticationService.login(
           username,
           password
-        ));
+        );
 
         this._detectLoginState();
       },
