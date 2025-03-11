@@ -11,14 +11,39 @@ const jwt = require("jsonwebtoken");
 // Database
 const User = require("../models/userSchema");
 
-router.get("*", (req,res) => {
+router.get("*", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
 
-router.post("/", (req, res) => {
+router.post("/save", async (req, res) => {
   const data = req.body;
 
-  res.json({ message: "Data received successfully", received: data });
+  try {
+    const decoded = jwt.verify(data.token, process.env.JWT_SECRET);
+
+    if (decoded) {
+      try {
+        await User.findOneAndUpdate(
+          { username: data.username },
+          {
+            $push: {
+              documents: {
+                documentId: data.documentId,
+                documentName: data.documentName,
+                documentContent: data.documentContent,
+                documentPreferences: data.documentPreferences,
+              },
+            },
+          },
+          { new: true }
+        );
+      } catch (error) {
+        console.error("Error adding posts:", error);
+      }
+    }
+  } catch {
+    res.status(403).json({ error: "Forbidden: Invalid token" });
+  }
 });
 
 router.post("/register", async (req, res) => {
