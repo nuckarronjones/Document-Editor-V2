@@ -14,7 +14,7 @@ export class UserLoginPageComponent {
     );
   }
 
-  _loginError = false;
+  loginError = false;
 
   events = [
     {
@@ -26,10 +26,10 @@ export class UserLoginPageComponent {
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
-        this._loginError = ! await this.userAuthenticationService.login(
+        this.loginError = !(await this.userAuthenticationService.login(
           username,
           password
-        );
+        ));
 
         this._detectLoginState();
       },
@@ -37,7 +37,7 @@ export class UserLoginPageComponent {
   ];
 
   _detectLoginState() {
-    if (this._loginError === false) {
+    if (this.loginError === false) {
       //Login successful, change route to user documents
       this.routingService.setRoute("/allDocuments");
     } else {
@@ -54,39 +54,44 @@ export class UserLoginPageComponent {
     this._pushEvents();
 
     return `
-        <div class="container">
-
-            <h1>Flow Document Editor</h1>
+        <div class="loginPage">
+          <div class="loginContainer">
+            <h1 class="label">Flow Editor</h1>
             <h3>Enter your login credentials</h3>
 
-            <form class='loginForm' method="post" action="/login">
-                <label for="username">
-                    Username:
-                </label> 
+            <form class="loginForm" method="post" action="/login">
+              <label class="label" for="username"> Username: </label>
 
-                <input id="username" type="text" name="username" 
-                    placeholder="Enter your Username" required>
+              <input
+                class="w-100"
+                id="username"
+                type="text"
+                name="username"
+                placeholder="Enter your Username"
+                required
+              />
 
-                <label for="password">
-                    Password:
-                </label>
+              <label class="label" for="password"> Password: </label>
 
-                <input id="password" type="password" name="password" 
-                    placeholder="Enter your Password" required>
+              <input
+                class="w-100"
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Enter your Password"
+                required
+              />
 
-                ${
-                  this._loginError
-                    ? "<small class='errorText'> Invalid login </small> "
-                    : ""
-                }
+              ${ this.loginError ? "<small class='errorText'> The username or password you entered is incorrect </small> " : "" }
 
-                <div>
-                    <button id="loginButton" type="submit">
-                        Submit
-                    </button>
-                </div>
+              <button class="w-100 btnPrimary" id="loginButton" type="submit">
+                Log In
+              </button>
+
             </form>
+          </div>
         </div>
+
         `;
   }
 }
