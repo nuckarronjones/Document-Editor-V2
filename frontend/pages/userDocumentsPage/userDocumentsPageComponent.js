@@ -55,12 +55,15 @@ export class UserDocumentsPageComponent {
 
             ${this.documents && this.documents.length > 0 
               ? this.documents.map((document) => `
+
                   <div id="new-document-btn" class="card">
                     <i class="bi bi-file-earmark card-logo"></i>
                     <div class="card-title">${document.documentName}</div>
                   </div>
+                  
                 `).join('') 
-              : ''}     
+              : ''
+            }     
 
             </div>
             
