@@ -38,6 +38,10 @@
   margin: 0;
 }
 
+h1 {
+  margin-bottom: 10px;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background: #e4e4e4;
@@ -64,7 +68,7 @@ hr {
 }
 
 .btnPrimary {
-  background-color: #a742c6 ;
+  background-color: #a742c6;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -78,8 +82,8 @@ hr {
   color: #fff;
 }
 
-.w-100{
-  width:100%;
+.w-100 {
+  width: 100%;
 }
 
 .container {
@@ -109,6 +113,7 @@ select {
   font-size: 11pt;
   background-color: transparent;
 }
+
 .bi {
   padding: 5px;
   background: -moz-linear-gradient(top, blue 0%, #a742c6 100%);
@@ -315,6 +320,7 @@ select {
 /*
   USER LOGIN COMPONENT
 */
+
 .loginPage {
   height: 100vh;
   width: 100vw;
@@ -326,7 +332,7 @@ select {
 .loginContainer {
   background-color: white;
   height: 350px;
-  width:300px;
+  width: 300px;
   padding: 50px;
   border: 1px solid lightgrey;
   border-radius: 10px;
@@ -341,14 +347,65 @@ select {
     margin-top: 50px;
   }
 
-  .errorInputs{
+  .errorInputs {
     border: 2px red solid;
   }
-  
+
   .errorText {
-    margin-top:5px;
+    margin-top: 5px;
     position: absolute;
     color: red;
     display: block;
+  }
+}
+
+/*
+  USER DOCUMENTS COMPONENT
+*/
+.userDocumentsContainer {
+  display: flex;
+  flex-flow: column;
+  padding: 50px;
+  margin-top: 15px;
+  height: calc(100vh - 30px);
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+
+  .documentsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height:100%;
+    overflow-y:scroll;
+
+    .card{
+      position: relative;
+      box-sizing: border-box;
+      padding:5px;
+      width:180px;
+      height:250px;
+      margin:10px;
+      display:inline-block;
+      border: 1px solid lightgrey;
+      background-color: #e7e7e7;
+
+      .card-title{
+        width:100%;
+        max-width: 170px;
+        font-size: 15px;
+        text-align: center;
+      }
+
+      .card-logo{
+        font-size: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    
   }
 }
