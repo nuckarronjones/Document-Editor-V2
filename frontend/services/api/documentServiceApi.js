@@ -7,21 +7,29 @@ class DocumentServiceApi {
     this.userAuthenticationService = userAuthenticationService;
   }
 
-  async retrieveAllDocuments() {
-    await fetch("/allUserDocuments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: authenticatedUser.username,
-        token: authenticatedUser.jwtToken
-      }),
+retrieveAllDocuments() {
+  const authenticatedUser = this.userAuthenticationService.getUser();
+
+  return fetch("/allUserDocuments", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: authenticatedUser.username,
+      token: authenticatedUser.jwtToken
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data.documents;
     })
-      .then((response) => response.json())
-      .then((data) => console.log("Success:", data))
-      .catch((error) => console.error("Error:", error));
-  }
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error; 
+    });
+}
+
 
   retrieveDocumentById(id) {}
 
