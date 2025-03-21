@@ -3,11 +3,11 @@ class UserAuthenticationService {
 
   authenticatedUser = {
     username: "",
-    jwtToken: ""
-  }
+    jwtToken: "",
+  };
 
   async login(username, password) {
-    let loginState;
+    let loginState = false;
     await fetch("/login", {
       method: "POST",
       headers: {
@@ -18,34 +18,28 @@ class UserAuthenticationService {
         password: password,
       }),
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
         loginState = true;
         this._setUserName(username);
         this._setJwtToken(data.token);
       })
-      .catch(() => loginState = false);
+      .catch(() => (loginState = false));
 
     return loginState;
   }
 
-  _setJwtToken(token){
+  _setJwtToken(token) {
     this.authenticatedUser.jwtToken = token;
   }
 
-  _setUserName(username){
+  _setUserName(username) {
     this.authenticatedUser.username = username;
   }
 
-  getUser(){
+  getUser() {
     return this.authenticatedUser;
   }
-
 }
 
 export const userAuthenticationService = new UserAuthenticationService();
