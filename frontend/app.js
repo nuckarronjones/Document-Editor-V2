@@ -7,9 +7,6 @@ import { routingService } from "./services/routingService.js";
 import { eventListenerService } from "./services/eventService.js";
 class App {
   constructor() {
-    this.userLoginPageComponent = new UserLoginPageComponent();
-    this.userDocumentsPageComponent = new UserDocumentsPageComponent();
-    this.documentEditorPageComponent = new DocumentEditorPageComponent();
     this.shapesModal = new ShapesModal();
 
     this.eventListenerService = eventListenerService;
@@ -26,7 +23,7 @@ class App {
     const appElement = document.getElementById("app");
 
     const html = `
-      ${this.userLoginPageComponent.render()}
+      ${new UserLoginPageComponent().render()}
     `;
 
     //Initialize page content first, then listeners. Must be in this order to attach listeners to html
@@ -42,13 +39,13 @@ class App {
     let component;
     switch (true) {
       case url.includes("/editor"):
-        component = this.documentEditorPageComponent;
+        component = new DocumentEditorPageComponent();
         break;
       case url.includes("/allDocuments"):
-        component = this.userDocumentsPageComponent;
+        component = new UserDocumentsPageComponent();
         break;
       default:
-        component = this.userLoginPageComponent;
+        component = new UserLoginPageComponent();
     }
 
     appElement.innerHTML = component.render();
