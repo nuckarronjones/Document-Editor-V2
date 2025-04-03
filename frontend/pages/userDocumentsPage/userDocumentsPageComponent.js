@@ -16,15 +16,12 @@ export class UserDocumentsPageComponent {
       this.eventListenerService
     );
 
-    this.documentServiceApi
-      .retrieveAllDocuments()
-      .then((documents) => {
-        this.documents = [...documents];
-        this.componentRefreshService.refreshComponent(this.render.bind(this));
-      })
-      .catch((error) => {
-        console.error("Error fetching documents:", error);
-      });
+    this.documentServiceApi.retrieveAllDocuments().then((documents) => {
+      this.documents = [...documents];
+      this.componentRefreshService.refreshComponent(this.render.bind(this));
+    }).catch(error => {
+      console.error("Error fetching documents:", error);
+    });
   }
 
   events = [
@@ -56,21 +53,16 @@ export class UserDocumentsPageComponent {
                 <i class="card-logo bi bi-plus"></i>
             </div>
 
-            ${
-              this.documents && this.documents.length > 0
-                ? this.documents
-                    .map(
-                      (document) => `
+            ${this.documents && this.documents.length > 0 
+              ? this.documents.map((document) => `
 
                   <div data-document-id=${document.documentId} class="card">
                     <i class="bi bi-file-earmark card-logo"></i>
                     <div class="card-title">${document.documentName}</div>
                   </div>
                   
-                `
-                    )
-                    .join("")
-                : ""
+                `).join('') 
+              : ''
             }     
 
             </div>
