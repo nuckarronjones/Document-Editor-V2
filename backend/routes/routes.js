@@ -106,13 +106,20 @@ router.post("/allUserDocuments", async (req, res) => {
         const userDocuments = user.documents;
 
         if (userDocuments) {
-          res
-            .status(200)
-            .json({
-              documents: user.documents,
-              message: "Retrieved user documents.",
-            });
-        } else {
+          res.status(200).json({
+            documents: user.documents,
+            message: "Retrieved user documents.",
+          });
+        }
+      } catch (error) {
+        res.status(400).json({ message: "Cannot locate user documents." });
+      }
+    }
+  } catch {
+    res.status(403).json({ error: "Forbidden: Invalid token" });
+  }
+});
+
 router.post("/userDocument", async (req, res) => {
   const data = req.body;
   try {
