@@ -336,27 +336,27 @@ select {
   padding: 50px;
   border: 1px solid lightgrey;
   border-radius: 10px;
+}
 
-  .label {
-    position: relative;
-    display: block;
-    margin-top: 20px;
-  }
+.loginContainer .label {
+  position: relative;
+  display: block;
+  margin-top: 20px;
+}
 
-  #loginButton {
-    margin-top: 50px;
-  }
+.loginContainer #loginButton {
+  margin-top: 50px;
+}
 
-  .errorInputs {
-    border: 2px red solid;
-  }
+.loginContainer .errorInputs {
+  border: 2px solid red;
+}
 
-  .errorText {
-    margin-top: 5px;
-    position: absolute;
-    color: red;
-    display: block;
-  }
+.loginContainer .errorText {
+  margin-top: 5px;
+  position: absolute;
+  color: red;
+  display: block;
 }
 
 /*
@@ -372,40 +372,54 @@ select {
   background-color: white;
   border-radius: 10px;
   border: 1px solid lightgrey;
+}
 
-  .documentsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    height:100%;
-    overflow-y:scroll;
+.userDocumentsContainer .documentsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
 
-    .card{
-      position: relative;
-      box-sizing: border-box;
-      padding:5px;
-      width:180px;
-      height:250px;
-      margin:10px;
-      display:inline-block;
-      border: 1px solid lightgrey;
-      background-color: #e7e7e7;
+.userDocumentsContainer .documentsContainer .card {
+  position: relative;
+  box-sizing: border-box;
+  padding: 5px;
+  width: 180px;
+  height: 250px;
+  margin: 10px;
+  display: inline-block;
+  border: 1px solid lightgrey;
+  background-color: #e7e7e7;
+}
 
-      .card-title{
-        width:100%;
-        max-width: 170px;
-        font-size: 15px;
-        text-align: center;
-      }
+.userDocumentsContainer .documentsContainer .card .card-title-container {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-      .card-logo{
-        font-size: 100px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
-    
-  }
+.userDocumentsContainer
+  .documentsContainer
+  .card
+  .card-title-container
+  .card-header {
+  align-self: start;
+}
+
+.userDocumentsContainer
+  .documentsContainer
+  .card
+  .card-title-container
+  .card-icon {
+  align-self: flex-end;
+}
+
+.userDocumentsContainer .documentsContainer .card .card-logo {
+  font-size: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
