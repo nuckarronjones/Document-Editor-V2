@@ -1,5 +1,6 @@
 import { eventListenerService } from "../../../../services/eventService.js";
 import { toolbarService } from "../../../../services/toolbarService.js";
+import { documentPreferencesService } from "../../../../services/documentPreferencesService.js";
 
 import { COLORS } from "../../../../data/documentData.js";
 import { LINE_SPACINGS } from "../../../../data/documentData.js";
@@ -9,6 +10,7 @@ export class TextEditorToolbarComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
     this.toolbarService = toolbarService;
+    this.preferences = documentPreferencesService.preferences;
 
     this.fontList = FONTLIST;
     this.lineSpacings = LINE_SPACINGS;
@@ -127,7 +129,7 @@ export class TextEditorToolbarComponent {
         <div id="textSettings" class="toolbar">
             <ul class="textSettings hover">
                 <li id="font-loader">
-                <span id="font-option-preview">Times New Roman</span>
+                <span id="font-option-preview">${this.preferences.font}</span>
                 <i class="bi bi-chevron-compact-down selection-icon"></i>
                 <div id="font-dropdown" class="popupMenuSelection hidden">
                     <ul class="noBullets hover">
@@ -139,7 +141,7 @@ export class TextEditorToolbarComponent {
                 <hr />
 
                 <li id="font-size-loader">
-                <span id="fontSizeTitle">15pt</span>
+                <span id="fontSizeTitle">${this.preferences.fontSize}</span>
                 <i class="bi bi-chevron-compact-down selection-icon"></i>
                 <div id="font-size-preview" class="popupMenuSelection hidden">
                     <ul class="noBullets hover">

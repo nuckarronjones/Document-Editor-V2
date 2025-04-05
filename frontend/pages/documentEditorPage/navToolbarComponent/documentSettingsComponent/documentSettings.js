@@ -3,6 +3,7 @@ import { toolbarService } from "../../../../services/toolbarService.js";
 import { modalService } from "../../../../services/modalService.js";
 import { routingService } from "../../../../services/routingService.js";
 import { documentServiceApi } from "../../../../services/api/documentServiceApi.js";
+import { documentPreferencesService } from "../../../../services/documentPreferencesService.js";
 
 export class DocumentSettingsComponent {
   constructor() {
@@ -11,6 +12,7 @@ export class DocumentSettingsComponent {
     this.modalService = modalService;
     this.routingService = routingService;
     this.documentServiceApi = documentServiceApi;
+    this.documentPreferencesService = documentPreferencesService;
   }
 
   events = [
@@ -77,7 +79,7 @@ export class DocumentSettingsComponent {
                       <button id="home-button"><i id="logo" class="bi bi-book selection-icon"></i></button>
                     </li>
                     <li>
-                    <input id="documentName" type="" name="" value="Document Title" />
+                    <input id="documentName" type="" name="" value="${this.documentPreferencesService.documentTitle}" />
                     </li>
                 </ul>
                 </div>

@@ -5,6 +5,7 @@ class DocumentPreferencesService {
 
   loadDefaultPreferences(){
     this._documentId = "";
+    this._documentTitle = "";
     this._documentContent = "";
     this._preferences = {
       fontSize: "15",
@@ -29,8 +30,16 @@ class DocumentPreferencesService {
     return this._preferences;
   }
 
+  get documentTitle(){
+    return this._documentTitle;
+  }
+
   set documentContent(content){
     return this._documentContent = content;
+  }
+
+  set documentTitle(title){
+    return this._documentTitle = title;
   }
 
   set documentId(documentId) {

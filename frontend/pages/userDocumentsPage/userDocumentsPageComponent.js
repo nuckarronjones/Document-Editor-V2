@@ -39,6 +39,7 @@ export class UserDocumentsPageComponent {
           .retrieveDocumentById(documentId)
           .then((document) => {
             this.documentPreferencesService.documentId = document.documentId;
+            this.documentPreferencesService.documentTitle = document.documentName;
             this.documentPreferencesService.preferences = document.documentPreferences;
             this.documentPreferencesService.documentContent = document.documentContent;
             this.routingService.setRoute("/editor");
