@@ -2,21 +2,55 @@ import { eventListenerService } from "../../services/eventService.js";
 import { routingService } from "../../services/routingService.js";
 import { documentPreferencesService } from "../../services/documentPreferencesService.js";
 import { generateDocumentId } from "../../funcions/generateDocumentId.js";
+import { documentServiceApi } from "../../services/api/documentServiceApi.js";
+import { ComponentRefreshService } from "../../services/componentRefreshService.js";
 
 export class UserDocumentsPageComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
     this.documentPreferencesService = documentPreferencesService;
     this.routingService = routingService;
+    this.documentServiceApi = documentServiceApi;
+
+    this.componentRefreshService = new ComponentRefreshService(
+      this.eventListenerService
+    );
+
+    this.documentServiceApi
+      .retrieveAllDocuments()
+      .then((documents) => {
+        this.documents = [...documents];
+        this.componentRefreshService.refreshComponent(this.render.bind(this));
+      })
+      .catch((error) => {
+        console.error("Error fetching documents:", error);
+      });
   }
 
   events = [
     {
-      id: "new-document-btn",
+      id: "new-document",
       eventType: "click",
       action: () => {
-        this.routingService.setRoute("/editor");
+        this.documentPreferencesService.loadDefaultPreferences();
         this.documentPreferencesService.documentId = generateDocumentId();
+        this.routingService.setRoute("/editor");
+      },
+    },
+    {
+      class: "user-document",
+      eventType: "click",
+      action: (pointer) => {
+        const documentId = pointer.srcElement.dataset.documentId;
+
+        this.documentServiceApi
+          .retrieveDocumentById(documentId)
+          .then((document) => {
+            this.documentPreferencesService.documentId = document.documentId;
+            this.documentPreferencesService.preferences = document.documentPreferences;
+            this.documentPreferencesService.documentContent = document.documentContent;
+            this.routingService.setRoute("/editor");
+          });
       },
     },
   ];
@@ -35,15 +69,26 @@ export class UserDocumentsPageComponent {
 
             <div class="documentsContainer">
 
-              <div id="new-document-btn" class="card">
-                <i class="card-logo bi bi-plus"></i>
+              <div id="new-document" class="card">
+                  <i class="card-logo bi bi-plus"></i>
               </div>
 
-              <!--div id="new-document-btn" class="card">
-                <i class="bi bi-file-earmark card-logo"></i>
-                <div class="card-title">My Document Name</div>
-              </div-->
-
+              ${
+                this.documents && this.documents.length > 0
+                  ? this.documents
+                      .map(
+                        (document) => `
+                        <span class="user-document">
+                          <div class="card"  data-document-id="${document.documentId}">
+                            <i class="bi bi-file-earmark card-logo"></i>
+                            <div class="card-title">${document.documentName}</div>
+                          </div>
+                        </span>
+                      `
+                      )
+                      .join("")
+                  : ""
+              }     
             </div>
             
           </div>

@@ -7,29 +7,57 @@ class DocumentServiceApi {
     this.userAuthenticationService = userAuthenticationService;
   }
 
-  async retrieveAllDocuments() {
-    await fetch("/allUserDocuments", {
+retrieveAllDocuments() {
+  const { username, jwtToken } = this.userAuthenticationService.getUser();
+
+  return fetch("/allUserDocuments", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: username,
+      token: jwtToken
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data.documents;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error; 
+    });
+}
+
+  retrieveDocumentById(id) {
+    const { username, jwtToken } = this.userAuthenticationService.getUser();
+
+    return fetch("/userDocument", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: authenticatedUser.username,
-        token: authenticatedUser.jwtToken
+        username: username,
+        token: jwtToken,
+        documentId: id,
       }),
     })
-      .then((response) => response.json())
-      .then((data) => console.log("Success:", data))
-      .catch((error) => console.error("Error:", error));
+    .then((response) => response.json())
+    .then((data) => {
+      return data.document[0];
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error; 
+    });
   }
-
-  retrieveDocumentById(id) {}
 
   saveDocument() {
     const documentId = this.documentPreferencesService.documentId;
     const documentName = this.documentPreferencesService.getDocumentTitle();
-    const documentContent =
-      this.documentPreferencesService.getDocumentContent();
+    const documentContent = document.getElementById('mainDocument').innerHTML;
     const documentPreferences = this.documentPreferencesService.preferences;
     const authenticatedUser = this.userAuthenticationService.getUser();
 

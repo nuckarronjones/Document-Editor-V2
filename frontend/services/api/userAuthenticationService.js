@@ -6,9 +6,8 @@ class UserAuthenticationService {
     jwtToken: "",
   };
 
-  async login(username, password) {
-    let loginState = false;
-    await fetch("/login", {
+  login(username, password) {
+    return fetch("/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -20,13 +19,18 @@ class UserAuthenticationService {
     })
       .then((response) => response.json())
       .then((data) => {
-        loginState = true;
-        this._setUserName(username);
-        this._setJwtToken(data.token);
-      })
-      .catch(() => (loginState = false));
+        if (data.token) {
+          this._setUserName(username);
+          this._setJwtToken(data.token);
 
-    return loginState;
+          return { loginError: false };
+        } else {
+          return { loginError: true };
+        }
+      })
+      .catch(() => {
+        return { loginError: true };
+      });
   }
 
   _setJwtToken(token) {

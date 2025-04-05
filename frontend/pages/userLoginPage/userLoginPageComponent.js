@@ -26,12 +26,16 @@ export class UserLoginPageComponent {
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
-        this.loginError = !(await this.userAuthenticationService.login(
-          username,
-          password
-        ));
-
-        this._detectLoginState();
+        this.userAuthenticationService
+          .login(username, password)
+          .then((loginStatus) => {
+            if (loginStatus.loginError) {
+              this.loginError = true;
+            } else {
+              this.loginError = false;
+            }
+            this._detectLoginState();
+          });
       },
     },
   ];
@@ -82,7 +86,11 @@ export class UserLoginPageComponent {
                 required
               />
 
-              ${ this.loginError ? "<small class='errorText'> The username or password you entered is incorrect </small> " : "" }
+              ${
+                this.loginError
+                  ? "<small class='errorText'> The username or password you entered is incorrect </small> "
+                  : ""
+              }
 
               <button class="w-100 btnPrimary" id="loginButton" type="submit">
                 Log In
