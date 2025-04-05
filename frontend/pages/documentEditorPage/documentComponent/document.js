@@ -8,6 +8,7 @@ export class DocumentComponent {
     this.fontPreference = this.documentPreferencesService.preferences.font;
     this.lineSpacing = this.documentPreferencesService.preferences.lineSpacing;
     this.fontSize = this.documentPreferencesService.preferences.fontSize;
+    this.documentContent = this.documentPreferencesService.documentContent;
   }
   
   render() {
@@ -24,7 +25,7 @@ export class DocumentComponent {
                 position: relative;
                 "
             >
-             ${this.documentPreferencesService.getDocumentContent()}
+             ${this.documentContent}
             </div>
         </div>
     `;

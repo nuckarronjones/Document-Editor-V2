@@ -16,21 +16,41 @@ export class UserDocumentsPageComponent {
       this.eventListenerService
     );
 
-    this.documentServiceApi.retrieveAllDocuments().then((documents) => {
-      this.documents = [...documents];
-      this.componentRefreshService.refreshComponent(this.render.bind(this));
-    }).catch(error => {
-      console.error("Error fetching documents:", error);
-    });
+    this.documentServiceApi
+      .retrieveAllDocuments()
+      .then((documents) => {
+        this.documents = [...documents];
+        this.componentRefreshService.refreshComponent(this.render.bind(this));
+      })
+      .catch((error) => {
+        console.error("Error fetching documents:", error);
+      });
   }
 
   events = [
     {
-      id: "new-document-btn",
+      id: "new-document",
       eventType: "click",
       action: () => {
-        this.routingService.setRoute("/editor");
+        this.documentPreferencesService.loadDefaultPreferences();
         this.documentPreferencesService.documentId = generateDocumentId();
+        this.routingService.setRoute("/editor");
+      },
+    },
+    {
+      class: "user-document",
+      eventType: "click",
+      action: (pointer) => {
+        const documentId = pointer.srcElement.dataset.documentId;
+
+        this.documentServiceApi
+          .retrieveDocumentById(documentId)
+          .then((document) => {
+            this.documentPreferencesService.documentId = document.documentId;
+            this.documentPreferencesService.preferences = document.documentPreferences;
+            this.documentPreferencesService.documentContent = document.documentContent;
+            this.routingService.setRoute("/editor");
+          });
       },
     },
   ];
@@ -49,22 +69,26 @@ export class UserDocumentsPageComponent {
 
             <div class="documentsContainer">
 
-            <div id="new-document-btn" class="card">
-                <i class="card-logo bi bi-plus"></i>
-            </div>
+              <div id="new-document" class="card">
+                  <i class="card-logo bi bi-plus"></i>
+              </div>
 
-            ${this.documents && this.documents.length > 0 
-              ? this.documents.map((document) => `
-
-                  <div data-document-id=${document.documentId} class="card">
-                    <i class="bi bi-file-earmark card-logo"></i>
-                    <div class="card-title">${document.documentName}</div>
-                  </div>
-                  
-                `).join('') 
-              : ''
-            }     
-
+              ${
+                this.documents && this.documents.length > 0
+                  ? this.documents
+                      .map(
+                        (document) => `
+                        <span class="user-document">
+                          <div class="card"  data-document-id="${document.documentId}">
+                            <i class="bi bi-file-earmark card-logo"></i>
+                            <div class="card-title">${document.documentName}</div>
+                          </div>
+                        </span>
+                      `
+                      )
+                      .join("")
+                  : ""
+              }     
             </div>
             
           </div>
