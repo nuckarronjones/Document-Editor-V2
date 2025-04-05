@@ -83,7 +83,7 @@ retrieveAllDocuments() {
   deleteDocumentById(id) {
     const authenticatedUser = this.userAuthenticationService.getUser();
 
-    fetch("/deleteDocument", {
+    return fetch("/deleteDocument", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
