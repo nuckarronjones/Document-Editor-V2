@@ -16,15 +16,7 @@ export class UserDocumentsPageComponent {
       this.eventListenerService
     );
 
-    this.documentServiceApi
-      .retrieveAllDocuments()
-      .then((documents) => {
-        this.documents = [...documents];
-        this.componentRefreshService.refreshComponent(this.render.bind(this));
-      })
-      .catch((error) => {
-        console.error("Error fetching documents:", error);
-      });
+    this._refreshUserDocuments();
   }
 
   events = [
@@ -58,10 +50,23 @@ export class UserDocumentsPageComponent {
       eventType: "click",
       action: (pointer) => {
         const documentToDelete = pointer.target.dataset.deleteDocument;
-        this.documentServiceApi.deleteDocumentById(documentToDelete);
+        this.documentServiceApi.deleteDocumentById(documentToDelete)
+        .then(()=> this._refreshUserDocuments())
       },
     },
   ];
+
+  _refreshUserDocuments(){
+    this.documentServiceApi.retrieveAllDocuments()
+      .then((documents) => {
+        this.documents = [...documents];
+        this.componentRefreshService.refreshComponent(this.render.bind(this));
+      })
+      .catch((error) => {
+        console.error("Error fetching documents:", error);
+      });
+  }
+
 
   _pushEvents() {
     this.eventListenerService.events.push(...this.events);
