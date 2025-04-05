@@ -53,6 +53,14 @@ export class UserDocumentsPageComponent {
           });
       },
     },
+    {
+      class: "card-delete-icon",
+      eventType: "click",
+      action: (pointer) => {
+        const documentToDelete = pointer.target.dataset.deleteDocument;
+        this.documentServiceApi.deleteDocumentById(documentToDelete);
+      },
+    },
   ];
 
   _pushEvents() {
@@ -78,18 +86,22 @@ export class UserDocumentsPageComponent {
                   ? this.documents
                       .map(
                         (document) => `
-                        <span class="user-document">
-                          <div class="card"  data-document-id="${document.documentId}">
+                          <div class="card">
 
                             <div class="card-title-container">
                               <h4 class="card-header">${document.documentName}</h4>
-                              <i class="bi bi-trash-fill card-icon"></i>
+                              <i 
+                                data-delete-document="${document.documentId}" 
+                                class="bi bi-trash-fill card-delete-icon"
+                              ></i>
                             </div>
 
-                            <i class="bi bi-file-earmark card-logo"></i>
+                            <i 
+                              data-document-id="${document.documentId}"
+                              class="bi bi-file-earmark card-logo user-document"
+                            ></i>
                             
                           </div>
-                        </span>
                       `
                       )
                       .join("")

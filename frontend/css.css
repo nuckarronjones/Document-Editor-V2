@@ -419,8 +419,8 @@ select {
   .documentsContainer
   .card
   .card-title-container
-  .card-icon {
-    background-color:#f46c6c;
+  .card-delete-icon {
+  background-color:#f46c6c;
   margin-left: auto;
 }
 

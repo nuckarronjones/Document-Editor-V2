@@ -80,7 +80,25 @@ retrieveAllDocuments() {
       .catch((error) => console.error("Error:", error));
   }
 
-  deleteDocumentById(id) {}
+  deleteDocumentById(id) {
+    const authenticatedUser = this.userAuthenticationService.getUser();
+
+    fetch("/deleteDocument", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: authenticatedUser.username,
+        token: authenticatedUser.jwtToken,
+        documentId: id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log("Success:", data))
+      .catch((error) => console.error("Error:", error));
+  }
+
 }
 
 export const documentServiceApi = new DocumentServiceApi();
