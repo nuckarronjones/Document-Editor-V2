@@ -74,7 +74,7 @@ export class DocumentSettingsComponent {
            <div id="name_Toolbar" class="toolbar">
                 <ul class="textSettings">
                     <li 
-                      <button id="home-button"><i id="logo" class="bi bi-book"></i></button>
+                      <button id="home-button"><i id="logo" class="bi bi-book selection-icon"></i></button>
                     </li>
                     <li>
                     <input id="documentName" type="" name="" value="Document Title" />
@@ -88,9 +88,9 @@ export class DocumentSettingsComponent {
                     File
                     <div id="file-options-dropdown" class="popupMenuSelection hidden">
                         <ul class="noBullets hover">
-                        <li id="save-button"><i class="bi bi-save"></i>Save</li>
-                        <li id="export-button"><i class="bi bi-download"></i>Download</li>
-                        <li id="print-button"><i class="bi bi-printer"></i>Print</li>
+                        <li id="save-button"><i class="bi bi-save selection-icon"></i>Save</li>
+                        <li id="export-button"><i class="bi bi-download selection-icon"></i>Download</li>
+                        <li id="print-button"><i class="bi bi-printer selection-icon"></i>Print</li>
                         </ul>
                     </div>
                     </li>
@@ -99,7 +99,7 @@ export class DocumentSettingsComponent {
                     Insert
                     <div id="insert-options-dropdown" class="popupMenuSelection hidden">
                         <ul class="noBullets hover">
-                        <li id="toggle-shapes-modal"><i class="bi bi-star"></i>Shapes</li>
+                        <li id="toggle-shapes-modal"><i class="bi bi-star selection-icon"></i>Shapes</li>
                         </ul>
                     </div>
                     </li>

@@ -128,7 +128,7 @@ export class TextEditorToolbarComponent {
             <ul class="textSettings hover">
                 <li id="font-loader">
                 <span id="font-option-preview">Times New Roman</span>
-                <i class="bi bi-chevron-compact-down"></i>
+                <i class="bi bi-chevron-compact-down selection-icon"></i>
                 <div id="font-dropdown" class="popupMenuSelection hidden">
                     <ul class="noBullets hover">
                     ${this.renderFontList()}
@@ -140,7 +140,7 @@ export class TextEditorToolbarComponent {
 
                 <li id="font-size-loader">
                 <span id="fontSizeTitle">15pt</span>
-                <i class="bi bi-chevron-compact-down"></i>
+                <i class="bi bi-chevron-compact-down selection-icon"></i>
                 <div id="font-size-preview" class="popupMenuSelection hidden">
                     <ul class="noBullets hover">
                     ${this.renderFontSizeList()}
@@ -151,21 +151,21 @@ export class TextEditorToolbarComponent {
                 <hr />
 
                 <li class="text-styling-option">
-                <button><i class="bi bi-type-bold" data-fontStyle="bold"></i></button>
+                <button><i class="bi bi-type-bold selection-icon" data-fontStyle="bold"></i></button>
                 </li>
 
                 <li class="text-styling-option">
-                <button><i class="bi bi-type-italic" data-fontStyle="italic"></i></button>
+                <button><i class="bi bi-type-italic selection-icon" data-fontStyle="italic"></i></button>
                 </li>
 
                 <li class="text-styling-option">
-                <button><i class="bi bi-type-underline" data-fontStyle="underline"></i></button>
+                <button><i class="bi bi-type-underline selection-icon" data-fontStyle="underline"></i></button>
                 </li>
 
                 <hr />
 
                 <li id="font-colors-loader" class="text-styling-option">
-                <button><i class="bi bi-paint-bucket"></i></button>
+                <button><i class="bi bi-paint-bucket selection-icon"></i></button>
                 <div id="colors-dropdown" class="popupMenuSelection hidden">
                     <div>${this.renderFontColorList()}</div>
                 </div>
@@ -174,20 +174,20 @@ export class TextEditorToolbarComponent {
                 <hr />
 
                 <li class="text-styling-option">
-                <button><i class="bi bi-justify-left" data-fontStyle="justifyLeft"></i></button>
+                <button><i class="bi bi-justify-left selection-icon" data-fontStyle="justifyLeft"></i></button>
                 </li>
 
                 <li class="text-styling-option">
-                <button><i class="bi bi-justify" data-fontStyle="justifycenter"></i></button>
+                <button><i class="bi bi-justify selection-icon" data-fontStyle="justifycenter"></i></button>
 
                 </li>
 
                 <li class="text-styling-option">
-                <button><i class="bi bi-justify-right" data-fontStyle="justifyright"></i></button>
+                <button><i class="bi bi-justify-right selection-icon" data-fontStyle="justifyright"></i></button>
                 </li>
 
                 <li id="line-spacing-loader" title="Line Spacing">
-                <button><i class="bi bi-arrows-expand"></i></button>
+                <button><i class="bi bi-arrows-expand selection-icon"></i></button>
                 <div id="line-spacing-dropdown" class="popupMenuSelection hidden">
                     <ul class="noBullets hover">
                       ${this.renderSpacingList()}
