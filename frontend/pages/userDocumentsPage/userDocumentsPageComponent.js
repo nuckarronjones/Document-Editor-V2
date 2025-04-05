@@ -80,8 +80,14 @@ export class UserDocumentsPageComponent {
                         (document) => `
                         <span class="user-document">
                           <div class="card"  data-document-id="${document.documentId}">
+
+                            <div class="card-title-container">
+                              <h4 class="card-header">${document.documentName}</h4>
+                              <i class="bi bi-trash-fill card-icon"></i>
+                            </div>
+
                             <i class="bi bi-file-earmark card-logo"></i>
-                            <div class="card-title">${document.documentName}</div>
+                            
                           </div>
                         </span>
                       `

@@ -45,6 +45,7 @@ h1 {
 body {
   font-family: "Roboto", sans-serif;
   background: #e4e4e4;
+  color:#242424;
   font-size: 12pt;
   user-select: none; /*Disables highlighting in all elements except text area*/
 }
@@ -386,17 +387,20 @@ select {
 .userDocumentsContainer .documentsContainer .card {
   position: relative;
   box-sizing: border-box;
-  padding: 5px;
+  border-radius: 10px;
+  padding: 8px;
   width: 180px;
-  height: 250px;
+  height: 200px;
   margin: 10px;
   display: inline-block;
-  border: 1px solid lightgrey;
-  background-color: #e7e7e7;
+  border: 2px solid #c733f2;
+  background-color: #f4d6f3;
+  color:#242424;
 }
 
 .userDocumentsContainer .documentsContainer .card .card-title-container {
   display: flex;
+  align-items: center; 
   width: 100%;
   box-sizing: border-box;
 }
@@ -406,7 +410,9 @@ select {
   .card
   .card-title-container
   .card-header {
-  align-self: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .userDocumentsContainer
@@ -414,12 +420,14 @@ select {
   .card
   .card-title-container
   .card-icon {
-  align-self: flex-end;
+    background-color:#f46c6c;
+  margin-left: auto;
 }
 
 .userDocumentsContainer .documentsContainer .card .card-logo {
-  font-size: 100px;
+  font-size: 75px;
   position: absolute;
+  background-color:#c733f2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
