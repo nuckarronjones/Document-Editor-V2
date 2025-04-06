@@ -52,7 +52,6 @@ body {
 
 input {
   border-radius: 5px;
-  height: 40px;
   border: 1px solid #ced4da;
   padding: 10px;
   box-sizing: border-box;
@@ -279,6 +278,11 @@ select {
 #logo {
   font-size: 15pt;
   margin-left: -0.3rem;
+}
+
+#documentName{
+  height:25px;
+  width:300px;
 }
 
 /*
