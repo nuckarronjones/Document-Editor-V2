@@ -3,16 +3,12 @@ import { documentPreferencesService } from "./documentPreferencesService.js";
 class ToolbarService {
   constructor() {
     this.documentPreferencesService = documentPreferencesService;
+    
+    this.activeDropdownElementId = null;
   }
 
-  activeDropdownElementId = null;
-  
   documentElement() {
     return document.getElementById("mainDocument");
-  }
-
-  _setActiveDropdown(elementID) {
-    this.activeDropdownElementId = elementID;
   }
 
   setTextStyling(pointer) {
@@ -121,24 +117,34 @@ class ToolbarService {
     const currentActiveDropdown = this.activeDropdownElementId;
 
     if (currentActiveDropdown == clickedElement) {
-      this._setActiveDropdown(null);
-      document.getElementById(clickedElement).classList.remove("visible");
-      document.getElementById(clickedElement).classList.add("hidden");
+      this._hideElement(clickedElement, null);
+
     } else if (currentActiveDropdown) {
-      document
-        .getElementById(currentActiveDropdown)
-        .classList.remove("visible");
-      document.getElementById(currentActiveDropdown).classList.add("hidden");
+      this._hideElement(currentActiveDropdown, null);
+      this._showElement(clickedElement,clickedElement);
 
-      this._setActiveDropdown(clickedElement);
-
-      document.getElementById(clickedElement).classList.remove("hidden");
-      document.getElementById(clickedElement).classList.add("visible");
     } else {
-      this._setActiveDropdown(clickedElement);
-      document.getElementById(clickedElement).classList.remove("hidden");
-      document.getElementById(clickedElement).classList.add("visible");
+      this._showElement(clickedElement,clickedElement);
+      
     }
+  }
+
+  _hideElement(clickedElement, activeDropdown){
+    this._setActiveDropdown(activeDropdown);
+
+    document.getElementById(clickedElement).classList.remove("visible");
+    document.getElementById(clickedElement).classList.add("hidden");
+  }
+
+  _showElement(clickedElement, activeDropdown){
+    this._setActiveDropdown(activeDropdown);
+
+    document.getElementById(clickedElement).classList.add("visible");
+    document.getElementById(clickedElement).classList.remove("hidden");
+  }
+
+  _setActiveDropdown(elementID) {
+    this.activeDropdownElementId = elementID;
   }
 }
 
