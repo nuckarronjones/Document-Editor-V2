@@ -41,7 +41,7 @@ class ToolbarService {
     this.documentPreferencesService.preferences.fontSize = fontSize;
     
     //Alter current document element and dropdown to reflect this change
-    document.getElementById("font-size-preview").innerText = fontSizeFormatted;
+    document.getElementById("fontSizeTitle").innerText = fontSizeFormatted;
     this.documentElement().style.fontSize = fontSizeFormatted;
   }
 

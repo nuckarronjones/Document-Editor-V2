@@ -141,7 +141,7 @@ export class TextEditorToolbarComponent {
                 <hr />
 
                 <li id="font-size-loader">
-                <span id="fontSizeTitle">${this.preferences.fontSize}</span>
+                <span id="fontSizeTitle">${this.preferences.fontSize}pt</span>
                 <i class="bi bi-chevron-compact-down selection-icon"></i>
                 <div id="font-size-preview" class="popupMenuSelection hidden">
                     <ul class="noBullets hover">
