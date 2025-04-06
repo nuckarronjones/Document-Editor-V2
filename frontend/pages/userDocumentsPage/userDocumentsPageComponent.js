@@ -79,7 +79,7 @@ export class UserDocumentsPageComponent {
     return `
         <div class="container">
           <div class="userDocumentsContainer">
-            <h1>My Documents</h1>
+            <h2>My Documents</h2>
 
             <div class="documentsContainer">
 
