@@ -58,15 +58,6 @@ input {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-hr {
-  /*seperator for list items in toolbar*/
-  width: 1px;
-  height: 15px;
-  display: inline-block;
-  background-color: lightgrey;
-  border: none;
-}
-
 .btnPrimary {
   background-color: #a742c6;
   color: white;
@@ -293,6 +284,14 @@ select {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
   padding: 1rem;
+  background:none;
+  border: none;
+}
+
+.text-styling-option button{
+  background:none;
+  padding:3px;
+  border: none;
 }
 
 /*

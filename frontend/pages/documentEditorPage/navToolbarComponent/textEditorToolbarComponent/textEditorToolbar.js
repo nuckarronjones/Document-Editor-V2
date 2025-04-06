@@ -138,8 +138,6 @@ export class TextEditorToolbarComponent {
                 </div>
                 </li>
 
-                <hr />
-
                 <li id="font-size-loader">
                 <span id="fontSizeTitle">${this.preferences.fontSize}pt</span>
                 <i class="bi bi-chevron-compact-down selection-icon"></i>
@@ -149,8 +147,6 @@ export class TextEditorToolbarComponent {
                     </ul>
                 </div>
                 </li>
-
-                <hr />
 
                 <li class="text-styling-option">
                 <button><i class="bi bi-type-bold selection-icon" data-fontStyle="bold"></i></button>
@@ -164,16 +160,12 @@ export class TextEditorToolbarComponent {
                 <button><i class="bi bi-type-underline selection-icon" data-fontStyle="underline"></i></button>
                 </li>
 
-                <hr />
-
                 <li id="font-colors-loader" class="text-styling-option">
                 <button><i class="bi bi-paint-bucket selection-icon"></i></button>
                 <div id="colors-dropdown" class="popupMenuSelection hidden">
                     <div>${this.renderFontColorList()}</div>
                 </div>
                 </li>
-
-                <hr />
 
                 <li class="text-styling-option">
                 <button><i class="bi bi-justify-left selection-icon" data-fontStyle="justifyLeft"></i></button>
@@ -188,7 +180,7 @@ export class TextEditorToolbarComponent {
                 <button><i class="bi bi-justify-right selection-icon" data-fontStyle="justifyright"></i></button>
                 </li>
 
-                <li id="line-spacing-loader" title="Line Spacing">
+                <li id="line-spacing-loader" class="text-styling-option">
                 <button><i class="bi bi-arrows-expand selection-icon"></i></button>
                 <div id="line-spacing-dropdown" class="popupMenuSelection hidden">
                     <ul class="noBullets hover">
