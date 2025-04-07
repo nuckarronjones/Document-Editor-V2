@@ -132,7 +132,7 @@ export class TextEditorToolbarComponent {
                 <span id="font-option-preview">${this.preferences.font}</span>
                 <i class="bi bi-chevron-compact-down selection-icon"></i>
                 <div id="font-dropdown" class="popupMenuSelection hidden">
-                    <ul class="noBullets hover">
+                    <ul class="dropdown-list-items hover">
                     ${this.renderFontList()}
                     </ul>
                 </div>
@@ -142,7 +142,7 @@ export class TextEditorToolbarComponent {
                 <span id="fontSizeTitle">${this.preferences.fontSize}pt</span>
                 <i class="bi bi-chevron-compact-down selection-icon"></i>
                 <div id="font-size-preview" class="popupMenuSelection hidden">
-                    <ul class="noBullets hover">
+                    <ul class="dropdown-list-items hover">
                     ${this.renderFontSizeList()}
                     </ul>
                 </div>
@@ -183,7 +183,7 @@ export class TextEditorToolbarComponent {
                 <li id="line-spacing-loader" class="text-styling-option">
                 <button><i class="bi bi-arrows-expand selection-icon"></i></button>
                 <div id="line-spacing-dropdown" class="popupMenuSelection hidden">
-                    <ul class="noBullets hover">
+                    <ul class="dropdown-list-items hover">
                       ${this.renderSpacingList()}
                     </ul>
                 </div>

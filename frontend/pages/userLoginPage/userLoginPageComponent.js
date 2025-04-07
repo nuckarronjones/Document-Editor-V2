@@ -59,6 +59,9 @@ export class UserLoginPageComponent {
 
     return `
         <div class="loginPage">
+
+          <img class="main-logo-corner" src="assets/images/flow-logo.png" />
+
           <div class="loginContainer">
             <h1 class="label">Flow Editor</h1>
             <h3>Enter your login credentials</h3>

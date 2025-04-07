@@ -78,6 +78,9 @@ export class UserDocumentsPageComponent {
 
     return `
         <div class="container">
+
+          <img class="main-logo-corner" src="assets/images/flow-logo.png" />
+
           <div class="userDocumentsContainer">
             <h2>My Documents</h2>
 
@@ -95,7 +98,7 @@ export class UserDocumentsPageComponent {
                           <div class="card">
 
                             <div class="card-title-container">
-                              <h4 class="card-header">${document.documentName}</h4>
+                              <h5 class="card-header">${document.documentName}</h5>
                               <i 
                                 data-delete-document="${document.documentId}" 
                                 class="bi bi-trash-fill card-delete-icon"

@@ -74,38 +74,51 @@ export class DocumentSettingsComponent {
 
     return `
            <div id="name_Toolbar" class="toolbar">
-                <ul class="textSettings">
-                    <li 
-                      <button id="home-button"><i id="logo" class="bi bi-book selection-icon"></i></button>
-                    </li>
-                    <li>
-                    <input id="documentName" type="" name="" value="${this.documentPreferencesService.documentTitle}" />
-                    </li>
-                </ul>
-                </div>
+              <div class="top-nav">
 
-                <div id="document_Settings" class="toolbar">
+                <button id="home-button">
+                  <img class="main-logo" src="assets/images/flow-logo.png" />
+                </button>
+
+                <input
+                  id="documentName"
+                  type=""
+                  name=""
+                  value="${this.documentPreferencesService.documentTitle}"
+                />
+              </div>
+
+              <div id="document_Settings" class="toolbar">
                 <ul class="textSettings hover">
-                    <li id="file-options">
+                  <li id="file-options">
                     File
                     <div id="file-options-dropdown" class="popupMenuSelection hidden">
-                        <ul class="noBullets hover">
-                        <li id="save-button"><i class="bi bi-save selection-icon"></i>Save</li>
-                        <li id="export-button"><i class="bi bi-download selection-icon"></i>Download</li>
-                        <li id="print-button"><i class="bi bi-printer selection-icon"></i>Print</li>
-                        </ul>
+                      <ul class="dropdown-list-items hover">
+                        <li id="save-button">
+                          <i class="bi bi-save selection-icon"></i>Save
+                        </li>
+                        <li id="export-button">
+                          <i class="bi bi-download selection-icon"></i>Download
+                        </li>
+                        <li id="print-button">
+                          <i class="bi bi-printer selection-icon"></i>Print
+                        </li>
+                      </ul>
                     </div>
-                    </li>
+                  </li>
 
-                    <li id="insert-options">
+                  <li id="insert-options">
                     Insert
                     <div id="insert-options-dropdown" class="popupMenuSelection hidden">
-                        <ul class="noBullets hover">
-                        <li id="toggle-shapes-modal"><i class="bi bi-star selection-icon"></i>Shapes</li>
-                        </ul>
+                      <ul class="dropdown-list-items hover">
+                        <li id="toggle-shapes-modal">
+                          <i class="bi bi-star selection-icon"></i>Shapes
+                        </li>
+                      </ul>
                     </div>
-                    </li>
+                  </li>
                 </ul>
+              </div>
             </div>
         `;
   }
