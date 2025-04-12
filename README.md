@@ -19,6 +19,11 @@ This project is a refactored version of my older document editor application, no
 
 ## Technologies Used
 
-- **HTML:** Markup structure for the document editor.
-- **CSS:** Styling for a clean and user-friendly interface.
+### Frontend:
+- **HTML:** Markup structure for the document editor.  
+- **CSS:** Styling for a clean and user-friendly interface.  
 - **JavaScript (Vanilla):** Core logic implementing modular programming principles.
+
+### Backend:
+- **Node.js & Express:** Server-side logic and routing.  
+- **MongoDB & Mongoose:** Persistent storage of user-created documents.  
