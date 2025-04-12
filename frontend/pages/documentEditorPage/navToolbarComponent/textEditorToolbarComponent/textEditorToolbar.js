@@ -1,5 +1,6 @@
-import { eventListenerService } from "../../../services/eventService.js";
-import { toolbarService } from "../../../services/toolbarService.js";
+import { eventListenerService } from "../../../../services/eventService.js";
+import { toolbarService } from "../../../../services/toolbarService.js";
+import { documentPreferencesService } from "../../../../services/documentPreferencesService.js";
 
 import { COLORS } from "../../../../data/documentData.js";
 import { LINE_SPACINGS } from "../../../../data/documentData.js";
@@ -9,6 +10,8 @@ export class TextEditorToolbarComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
     this.toolbarService = toolbarService;
+    this.preferences = documentPreferencesService.preferences;
+
     this.fontList = FONTLIST;
     this.lineSpacings = LINE_SPACINGS;
     this.colors = COLORS;
@@ -70,121 +73,117 @@ export class TextEditorToolbarComponent {
     {
       id: "font-loader",
       eventType: "click",
-      action: () => this.toolbarService.renderDropdown("font-dropdown"),
+      action: () => this.toolbarService.renderDropdown("font-dropdown")
     },
     {
       id: "font-size-loader",
       eventType: "click",
-      action: () => this.toolbarService.renderDropdown("font-size-preview"),
+      action: () => this.toolbarService.renderDropdown("font-size-preview")
     },
     {
       id: "font-colors-loader",
       eventType: "click",
-      action: () => this.toolbarService.renderDropdown("colors-dropdown"),
+      action: () => this.toolbarService.renderDropdown("colors-dropdown")
     },
     {
       id: "line-spacing-loader",
       eventType: "click",
-      action: () => this.toolbarService.renderDropdown("line-spacing-dropdown"),
+      action: () => this.toolbarService.renderDropdown("line-spacing-dropdown")
     },
     {
       class: "dropdown-font-option",
       eventType: "click",
-      action: (pointer) => this.toolbarService.setDocumentFont(pointer),
+      action: (pointer) => this.toolbarService.setDocumentFont(pointer)
     },
     {
       class: "dropdown-size-list",
       eventType: "click",
-      action: (pointer) => this.toolbarService.setDocumentFontSize(pointer),
+      action: (pointer) => this.toolbarService.setDocumentFontSize(pointer)
     },
     {
       class: "dropwown-spacing-option",
       eventType: "click",
-      action: (pointer) => this.toolbarService.setDocumentLineSpacing(pointer),
+      action: (pointer) => this.toolbarService.setDocumentLineSpacing(pointer)
     },
     {
       class: "text-styling-option",
       eventType: "click",
-      action: (pointer) => this.toolbarService.setTextStyling(pointer),
+      action: (pointer) => this.toolbarService.setTextStyling(pointer)
     },
     {
       class: "dropdown-color-option",
       eventType: "click",
-      action: (pointer) => this.toolbarService.setFontColor(pointer),
+      action: (pointer) => this.toolbarService.setFontColor(pointer)
     },
 
   ];
 
-  render() {
+  _pushEvents(){
     this.eventListenerService.events.push(...this.events);
+  }
+
+  render() {
+    this._pushEvents();
 
     return `
-        <div id="text_Settings" class="toolbar">
-            <ul class="text_Settings_Tools hover">
+        <div id="textSettings" class="toolbar">
+            <ul class="textSettings hover">
                 <li id="font-loader">
-                <span id="font-option-preview">Times New Roman</span>
-                <i class="bi bi-chevron-compact-down"></i>
-                <div id="font-dropdown" class="popup-selector hidden">
-                    <ul class="noBullets hover">
+                <span id="font-option-preview">${this.preferences.font}</span>
+                <i class="bi bi-chevron-compact-down selection-icon"></i>
+                <div id="font-dropdown" class="popupMenuSelection hidden">
+                    <ul class="dropdown-list-items hover">
                     ${this.renderFontList()}
                     </ul>
                 </div>
                 </li>
 
-                <hr />
-
                 <li id="font-size-loader">
-                <span id="fontSizeTitle">15pt</span>
-                <i class="bi bi-chevron-compact-down"></i>
-                <div id="font-size-preview" class="popup-selector hidden">
-                    <ul class="noBullets hover">
+                <span id="fontSizeTitle">${this.preferences.fontSize}pt</span>
+                <i class="bi bi-chevron-compact-down selection-icon"></i>
+                <div id="font-size-preview" class="popupMenuSelection hidden">
+                    <ul class="dropdown-list-items hover">
                     ${this.renderFontSizeList()}
                     </ul>
                 </div>
                 </li>
 
-                <hr />
-
                 <li class="text-styling-option">
-                <button><i class="bi bi-type-bold" data-fontStyle="bold"></i></button>
+                <button><i class="bi bi-type-bold selection-icon" data-fontStyle="bold"></i></button>
                 </li>
 
                 <li class="text-styling-option">
-                <button><i class="bi bi-type-italic" data-fontStyle="italic"></i></button>
+                <button><i class="bi bi-type-italic selection-icon" data-fontStyle="italic"></i></button>
                 </li>
 
                 <li class="text-styling-option">
-                <button><i class="bi bi-type-underline" data-fontStyle="underline"></i></button>
+                <button><i class="bi bi-type-underline selection-icon" data-fontStyle="underline"></i></button>
                 </li>
-
-                <hr />
 
                 <li id="font-colors-loader" class="text-styling-option">
-                <button><i class="bi bi-paint-bucket"></i></button>
-                <div id="colors-dropdown" class="popup-selector hidden">
+                <button><i class="bi bi-paint-bucket selection-icon"></i></button>
+                <div id="colors-dropdown" class="popupMenuSelection hidden">
                     <div>${this.renderFontColorList()}</div>
                 </div>
                 </li>
 
-                <hr />
-
                 <li class="text-styling-option">
-                <button><i class="bi bi-justify-left" data-fontStyle="justifyLeft"></i></button>
+                <button><i class="bi bi-justify-left selection-icon" data-fontStyle="justifyLeft"></i></button>
                 </li>
 
                 <li class="text-styling-option">
-                <button><i class="bi bi-justify" data-fontStyle="justifycenter"></i></button>
+                <button><i class="bi bi-justify selection-icon" data-fontStyle="justifycenter"></i></button>
 
                 </li>
 
                 <li class="text-styling-option">
-                <button><i class="bi bi-justify-right" data-fontStyle="justifyright"></i></button>
+                <button><i class="bi bi-justify-right selection-icon" data-fontStyle="justifyright"></i></button>
                 </li>
 
-                <li id="line-spacing-loader" title="Line Spacing">
-                <button><i class="bi bi-arrows-expand"></i></button>
-                <div id="line-spacing-dropdown" class="popup-selector hidden">
-                    <ul class="noBullets hover">
+                <li id="line-spacing-loader" class="text-styling-option">
+                <button><i class="bi bi-arrows-expand selection-icon"></i></button>
+                <div id="line-spacing-dropdown" class="popupMenuSelection hidden">
+                    <ul class="dropdown-list-items hover">
                       ${this.renderSpacingList()}
                     </ul>
                 </div>

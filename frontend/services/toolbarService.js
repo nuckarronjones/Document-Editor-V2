@@ -1,13 +1,14 @@
+import { documentPreferencesService } from "./documentPreferencesService.js";
+
 class ToolbarService {
-  constructor() {}
-  activeDropdownElementId = null;
-  
-  get documentElement() {
-    return document.getElementById("main-document");
+  constructor() {
+    this.documentPreferencesService = documentPreferencesService;
+    
+    this.activeDropdownElementId = null;
   }
 
-  _setActiveDropdown(elementID) {
-    this.activeDropdownElementId = elementID;
+  documentElement() {
+    return document.getElementById("mainDocument");
   }
 
   setTextStyling(pointer) {
@@ -17,18 +18,27 @@ class ToolbarService {
 
   setDocumentFont(pointer) {
     const fontSelection = pointer.target.style.fontFamily.replace(/['"]/g, "");
+    
+    //Update current user preference when user saves
+    this.documentPreferencesService.preferences.font = fontSelection;
 
+    //Alter current document element and dropdown to reflect this change
     document.getElementById(
       "font-option-preview"
     ).innerHTML = `<span style='font-family: ${fontSelection};'>${fontSelection}</span>`;
-    this.documentElement.style.fontFamily = fontSelection;
+    this.documentElement().style.fontFamily = fontSelection;
   }
 
   setDocumentFontSize(pointer) {
-    const fontSize = `${parseInt(pointer.target.innerHTML)}pt`;
+    const fontSize = parseInt(pointer.target.innerHTML);
+    const fontSizeFormatted = `${fontSize}pt`;
+
+    //Update current user preference when user saves
+    this.documentPreferencesService.preferences.fontSize = fontSize;
     
-    document.getElementById("font-size-preview").innerText = fontSize;
-    this.documentElement.style.fontSize = fontSize;
+    //Alter current document element and dropdown to reflect this change
+    document.getElementById("fontSizeTitle").innerText = fontSizeFormatted;
+    this.documentElement().style.fontSize = fontSizeFormatted;
   }
 
   setFontColor(pointer){
@@ -41,7 +51,11 @@ class ToolbarService {
   setDocumentLineSpacing(pointer){
     const spacing = pointer.target.dataset.spacing;
 
-    this.documentElement.style.lineHeight = spacing;
+    //Update current user preference when user saves
+    this.documentPreferencesService.preferences.lineSpacing = spacing;
+
+    //Alter current document element and dropdown to reflect this change
+    this.documentElement().style.lineHeight = spacing;
   }
 
   exportDocument() {
@@ -52,7 +66,7 @@ class ToolbarService {
       "<head><meta charset='utf-8'><title>Export HTML to Word Document with JavaScript</title></head><body>";
     const footer = "</body></html>";
     const sourceHTML =
-      header + document.getElementById("text_Container").innerHTML + footer;
+      header + document.getElementById("textContainer").innerHTML + footer;
 
     const source =
       "data:application/vnd.ms-word;charset=utf-8," +
@@ -80,14 +94,14 @@ class ToolbarService {
     newDiv.style.width = "50px";
     newDiv.src = imageURL;
 
-    this.documentElement.appendChild(newDiv);
+    this.documentElement().appendChild(newDiv);
 
     closeModal;
   }
 
   printDocument() {
     const documentContents =
-      document.getElementById("text_Container").innerHTML;
+      document.getElementById("textContainer").innerHTML;
     const windowedDocument = window.open("", "", "height=1375p, width=1063");
     
     windowedDocument.document.write("<html>");
@@ -103,24 +117,34 @@ class ToolbarService {
     const currentActiveDropdown = this.activeDropdownElementId;
 
     if (currentActiveDropdown == clickedElement) {
-      this._setActiveDropdown(null);
-      document.getElementById(clickedElement).classList.remove("visible");
-      document.getElementById(clickedElement).classList.add("hidden");
+      this._hideElement(clickedElement, null);
+
     } else if (currentActiveDropdown) {
-      document
-        .getElementById(currentActiveDropdown)
-        .classList.remove("visible");
-      document.getElementById(currentActiveDropdown).classList.add("hidden");
+      this._hideElement(currentActiveDropdown, null);
+      this._showElement(clickedElement,clickedElement);
 
-      this._setActiveDropdown(clickedElement);
-
-      document.getElementById(clickedElement).classList.remove("hidden");
-      document.getElementById(clickedElement).classList.add("visible");
     } else {
-      this._setActiveDropdown(clickedElement);
-      document.getElementById(clickedElement).classList.remove("hidden");
-      document.getElementById(clickedElement).classList.add("visible");
+      this._showElement(clickedElement,clickedElement);
+      
     }
+  }
+
+  _hideElement(clickedElement, activeDropdown){
+    this._setActiveDropdown(activeDropdown);
+
+    document.getElementById(clickedElement).classList.remove("visible");
+    document.getElementById(clickedElement).classList.add("hidden");
+  }
+
+  _showElement(clickedElement, activeDropdown){
+    this._setActiveDropdown(activeDropdown);
+
+    document.getElementById(clickedElement).classList.add("visible");
+    document.getElementById(clickedElement).classList.remove("hidden");
+  }
+
+  _setActiveDropdown(elementID) {
+    this.activeDropdownElementId = elementID;
   }
 }
 

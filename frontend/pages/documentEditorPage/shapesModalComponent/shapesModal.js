@@ -1,6 +1,6 @@
-import { modalService } from "../../services/modalService.js";
-import { eventListenerService } from "../../services/eventService.js";
-import { toolbarService } from "../../services/toolbarService.js";
+import { modalService } from "../../../services/modalService.js";
+import { eventListenerService } from "../../../services/eventService.js";
+import { toolbarService } from "../../../services/toolbarService.js";
 
 import { SHAPES } from "../../../data/documentData.js";
 
@@ -59,7 +59,7 @@ export class ShapesModal {
 
   events = [
     {
-      id: "shapes-modal-close-button",
+      id: "modalCloseBtn",
       eventType: "click",
       action: () => this.closeModal(),
     },
@@ -70,18 +70,22 @@ export class ShapesModal {
     },
   ];
 
-  render() {
+  _pushEvents(){
     this.eventListenerService.events.push(...this.events);
+  }
+
+  render() {
+    this._pushEvents();
 
     return `
           <div id="main-modal" class="hidden">
-            <div id="shapes_Modal"></div>
-            <div id="modal_Content">
-              <span id="shapes-modal-close-button">
+            <div id="shapesModal"></div>
+            <div id="modalContent">
+              <span id="modalCloseBtn">
                 <img src="https://img.icons8.com/ios-glyphs/30/000000/xbox-x.png" />
               </span>
               <div class="iconlist">
-                <ul id="shapes_Selection">
+                <ul id="shapesSelection">
                   ${this.renderIcons()}
                 </ul>
               </div>
