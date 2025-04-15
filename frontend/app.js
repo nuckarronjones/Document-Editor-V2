@@ -2,6 +2,7 @@ import { ShapesModal } from "./pages/documentEditorPage/shapesModalComponent/sha
 import { UserLoginPageComponent } from "./pages/userLoginPage/userLoginPageComponent.js";
 import { UserDocumentsPageComponent } from "./pages/userDocumentsPage/userDocumentsPageComponent.js";
 import { DocumentEditorPageComponent } from "./pages/documentEditorPage/documentEditorPageComponent.js";
+import { UserRegistrationPageComponent } from "./pages/userRegistrationPage/userRegistrationPageComponent.js";
 
 import { routingService } from "./services/routingService.js";
 import { eventListenerService } from "./services/eventService.js";
@@ -43,6 +44,12 @@ class App {
         break;
       case url.includes("/allDocuments"):
         component = new UserDocumentsPageComponent();
+        break;
+      case url.includes("/registration"):
+        component = new UserRegistrationPageComponent();
+        break;
+      case url.includes("/login"):
+        component = new UserLoginPageComponent();
         break;
       default:
         component = new UserLoginPageComponent();
