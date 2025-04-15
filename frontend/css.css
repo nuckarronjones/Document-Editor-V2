@@ -42,6 +42,10 @@ h1 {
   margin-bottom: 10px;
 }
 
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background: #e4e4e4;
@@ -118,6 +122,49 @@ select {
   -moz-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.loginPage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginContainer {
+  position: relative;
+  background-color: white;
+  height: 350px;
+  width: 300px;
+  padding: 50px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+}
+
+.loginContainer .label {
+  position: relative;
+  display: block;
+  margin-top: 20px;
+}
+
+.loginContainer #loginButton {
+  margin-top: 50px;
+}
+
+.loginContainer #registrationButton {
+  margin-top: 50px;
+}
+
+.loginContainer .errorInputs {
+  border: 2px solid red;
+}
+
+.loginContainer .errorText {
+  margin-top: 5px;
+  position: absolute;
+  color: red;
+  display: block;
 }
 
 .selection-icon{
@@ -346,45 +393,24 @@ select {
 }
 
 /*
-  USER LOGIN COMPONENT
+  USER REGISTRATION COMPONENT
 */
 
-.loginPage {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.loginContainer {
-  background-color: white;
-  height: 350px;
-  width: 300px;
-  padding: 50px;
-  border: 1px solid lightgrey;
-  border-radius: 10px;
-}
-
-.loginContainer .label {
-  position: relative;
-  display: block;
-  margin-top: 20px;
-}
-
-.loginContainer #loginButton {
-  margin-top: 50px;
-}
-
-.loginContainer .errorInputs {
-  border: 2px solid red;
-}
-
-.loginContainer .errorText {
-  margin-top: 5px;
+.successContainer{
+  width:200px;
+  text-align: center;
   position: absolute;
-  color: red;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.successContainer .bi-check-circle{
+  -webkit-text-fill-color: green;
   display: block;
+  margin-top:20px;
+  margin-bottom:40px;
+  font-size: 100px;
 }
 
 /*

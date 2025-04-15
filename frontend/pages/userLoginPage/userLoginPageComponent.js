@@ -38,6 +38,14 @@ export class UserLoginPageComponent {
           });
       },
     },
+    {
+      id: "signupLink",
+      eventType: "click",
+      action: async (event) => {
+        event.preventDefault();
+        this.routingService.setRoute("/registration");
+      }
+    }
   ];
 
   _detectLoginState() {
@@ -91,13 +99,16 @@ export class UserLoginPageComponent {
 
               ${
                 this.loginError
-                  ? "<small class='errorText'> The username or password you entered is incorrect </small> "
+                  ? "<small class='errorText mb-3'> The username or password you entered is incorrect </small> "
                   : ""
               }
 
-              <button class="w-100 btnPrimary" id="loginButton" type="submit">
+
+              <button class="w-100 btnPrimary mb-3" id="loginButton" type="submit">
                 Log In
               </button>
+
+               <a href="#" id="signupLink"><small>New user? Sign up here</small></a>
 
             </form>
           </div>

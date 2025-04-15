@@ -33,6 +33,26 @@ class UserAuthenticationService {
       });
   }
 
+  register(username, password) {
+    return fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        return response;
+      })
+      .catch(() => {
+        return { success: false };
+      });
+  }
+
   _setJwtToken(token) {
     this.authenticatedUser.jwtToken = token;
   }
