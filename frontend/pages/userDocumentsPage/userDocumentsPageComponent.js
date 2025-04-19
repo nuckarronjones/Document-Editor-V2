@@ -35,8 +35,6 @@ export class UserDocumentsPageComponent {
       action: (pointer) => {
         const documentId = pointer.srcElement.dataset.documentId;
 
-        console.log("clicked");
-
         this.documentServiceApi
           .retrieveDocumentById(documentId)
           .then((document) => {
