@@ -43,7 +43,7 @@ export class UserRegistrationPageComponent {
           this.errorMessage = response.message;
         }
 
-        this.ComponentLifecycleService.refreshComponent(this.render.bind(this));
+        this.componentLifecycleService.refreshComponent(this.render.bind(this));
       });
   }
 
@@ -55,7 +55,7 @@ export class UserRegistrationPageComponent {
     this._pushEvents();
 
     return `
-        <div id="UserRegistrationPageComponent class="loginPage">
+        <div id="UserRegistrationPageComponent" class="loginPage">
 
           <img class="main-logo-corner" src="assets/images/flow-logo.png" />
 
