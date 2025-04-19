@@ -9,7 +9,7 @@ export class NavToolbarComponent {
 
   render() {
     return `
-        <nav id="toolbarContainer">
+        <nav id="NavToolbarComponent" class="toolbarContainer">
             ${this.documentSettings.render()}
             ${this.textEditorToolbar.render()}
         </nav>

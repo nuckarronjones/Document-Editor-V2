@@ -91,27 +91,27 @@ export class TextEditorToolbarComponent {
       action: () => this.toolbarService.renderDropdown("line-spacing-dropdown")
     },
     {
-      class: "dropdown-font-option",
+      className: "dropdown-font-option",
       eventType: "click",
       action: (pointer) => this.toolbarService.setDocumentFont(pointer)
     },
     {
-      class: "dropdown-size-list",
+      className: "dropdown-size-list",
       eventType: "click",
       action: (pointer) => this.toolbarService.setDocumentFontSize(pointer)
     },
     {
-      class: "dropwown-spacing-option",
+      className: "dropwown-spacing-option",
       eventType: "click",
       action: (pointer) => this.toolbarService.setDocumentLineSpacing(pointer)
     },
     {
-      class: "text-styling-option",
+      className: "text-styling-option",
       eventType: "click",
       action: (pointer) => this.toolbarService.setTextStyling(pointer)
     },
     {
-      class: "dropdown-color-option",
+      className: "dropdown-color-option",
       eventType: "click",
       action: (pointer) => this.toolbarService.setFontColor(pointer)
     },
@@ -126,7 +126,7 @@ export class TextEditorToolbarComponent {
     this._pushEvents();
 
     return `
-        <div id="textSettings" class="toolbar">
+        <div id="TextEditorToolbarComponent" class="textSettingsToolbar">
             <ul class="textSettings hover">
                 <li id="font-loader">
                 <span id="font-option-preview">${this.preferences.font}</span>

@@ -3,20 +3,20 @@ import { routingService } from "../../services/routingService.js";
 import { documentPreferencesService } from "../../services/documentPreferencesService.js";
 import { generateDocumentId } from "../../functions/generateDocumentId.js";
 import { documentServiceApi } from "../../services/api/documentServiceApi.js";
-import { ComponentRefreshService } from "../../services/componentRefreshService.js";
+import { componentLifecycleService } from "../../services/componentLifecycleService.js";
+import { modalService } from "../../services/modalService.js";
+import { ConfirmationModalComponent } from "../../ui/modals/confirmationModalComponent.js";
 
 export class UserDocumentsPageComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
     this.documentPreferencesService = documentPreferencesService;
     this.routingService = routingService;
+    this.modalService = modalService;
     this.documentServiceApi = documentServiceApi;
+    this.componentLifecycleService = componentLifecycleService;
 
-    this.componentRefreshService = new ComponentRefreshService(
-      this.eventListenerService
-    );
-
-    this._refreshUserDocuments();
+    this.refreshUserDocuments();
   }
 
   events = [
@@ -30,7 +30,7 @@ export class UserDocumentsPageComponent {
       },
     },
     {
-      class: "user-document",
+      className: "user-document",
       eventType: "click",
       action: (pointer) => {
         const documentId = pointer.srcElement.dataset.documentId;
@@ -47,27 +47,32 @@ export class UserDocumentsPageComponent {
       },
     },
     {
-      class: "card-delete-icon",
+      className: "card-delete-icon",
       eventType: "click",
       action: (pointer) => {
         const documentToDelete = pointer.target.dataset.deleteDocument;
-        this.documentServiceApi.deleteDocumentById(documentToDelete)
-        .then(()=> this._refreshUserDocuments())
+
+        new ConfirmationModalComponent(() => {
+          this.documentServiceApi
+            .deleteDocumentById(documentToDelete)
+            .then(() => this.refreshUserDocuments());
+        });
+        
       },
     },
   ];
 
-  _refreshUserDocuments(){
-    this.documentServiceApi.retrieveAllDocuments()
+  refreshUserDocuments() {
+    this.documentServiceApi
+      .retrieveAllDocuments()
       .then((documents) => {
         this.documents = [...documents];
-        this.componentRefreshService.refreshComponent(this.render.bind(this));
+        this.componentLifecycleService.refreshComponent(this.render.bind(this));
       })
       .catch((error) => {
         console.error("Error fetching documents:", error);
       });
   }
-
 
   _pushEvents() {
     this.eventListenerService.events.push(...this.events);
@@ -77,7 +82,7 @@ export class UserDocumentsPageComponent {
     this._pushEvents();
 
     return `
-        <div class="container">
+        <div id="UserDocumentsPageComponent" class="container">
 
           <img class="main-logo-corner" src="assets/images/flow-logo.png" />
 

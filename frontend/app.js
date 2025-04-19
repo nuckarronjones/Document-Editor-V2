@@ -1,4 +1,3 @@
-import { ShapesModal } from "./pages/documentEditorPage/shapesModalComponent/shapesModal.js";
 import { UserLoginPageComponent } from "./pages/userLoginPage/userLoginPageComponent.js";
 import { UserDocumentsPageComponent } from "./pages/userDocumentsPage/userDocumentsPageComponent.js";
 import { DocumentEditorPageComponent } from "./pages/documentEditorPage/documentEditorPageComponent.js";
@@ -8,8 +7,6 @@ import { routingService } from "./services/routingService.js";
 import { eventListenerService } from "./services/eventService.js";
 class App {
   constructor() {
-    this.shapesModal = new ShapesModal();
-
     this.eventListenerService = eventListenerService;
     this.routingService = routingService;
     //Upon refresh, or initial load, set default url. Lets just send users home for now

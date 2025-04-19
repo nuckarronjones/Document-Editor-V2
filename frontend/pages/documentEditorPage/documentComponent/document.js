@@ -13,7 +13,7 @@ export class DocumentComponent {
   
   render() {
     return `
-        <div id="textContainer">
+        <div id="DocumentComponent" class="textContainer">
             <div
                 id="mainDocument"
                 contenteditable
