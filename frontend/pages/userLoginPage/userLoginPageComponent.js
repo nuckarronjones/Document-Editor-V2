@@ -66,7 +66,7 @@ export class UserLoginPageComponent {
     this._pushEvents();
 
     return `
-        <div class="loginPage">
+        <div id="UserLoginPageComponent" class="loginPage">
 
           <img class="main-logo-corner" src="assets/images/flow-logo.png" />
 

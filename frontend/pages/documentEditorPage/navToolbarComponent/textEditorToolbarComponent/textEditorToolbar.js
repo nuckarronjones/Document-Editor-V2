@@ -126,7 +126,7 @@ export class TextEditorToolbarComponent {
     this._pushEvents();
 
     return `
-        <div id="textSettings" class="toolbar">
+        <div id="TextEditorToolbarComponent" class="textSettingsToolbar">
             <ul class="textSettings hover">
                 <li id="font-loader">
                 <span id="font-option-preview">${this.preferences.font}</span>

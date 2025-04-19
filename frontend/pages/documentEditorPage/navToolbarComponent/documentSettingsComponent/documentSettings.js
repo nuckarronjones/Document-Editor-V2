@@ -73,7 +73,7 @@ export class DocumentSettingsComponent {
     this._pushEvents();
 
     return `
-           <div id="name_Toolbar" class="toolbar">
+           <div id="DocumentSettingsComponent" class="toolbar">
               <div class="top-nav">
 
                 <button id="home-button">

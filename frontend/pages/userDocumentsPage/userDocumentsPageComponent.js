@@ -77,7 +77,7 @@ export class UserDocumentsPageComponent {
     this._pushEvents();
 
     return `
-        <div class="container">
+        <div id="UserDocumentsPageComponent" class="container">
 
           <img class="main-logo-corner" src="assets/images/flow-logo.png" />
 
