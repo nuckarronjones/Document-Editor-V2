@@ -19,7 +19,6 @@ export class ConfirmationModalComponent {
       id: "closeConfirmationModal",
       eventType: "click",
       action: () => {
-        console.log("clicked");
         this._destroyModal();
       },
     },
