@@ -3,20 +3,20 @@ import { routingService } from "../../services/routingService.js";
 import { documentPreferencesService } from "../../services/documentPreferencesService.js";
 import { generateDocumentId } from "../../functions/generateDocumentId.js";
 import { documentServiceApi } from "../../services/api/documentServiceApi.js";
-import { ComponentRefreshService } from "../../services/componentRefreshService.js";
+import { componentLifecycleService } from "../../services/componentLifecycleService.js";
+import { modalService } from "../../services/modalService.js";
+import { ConfirmationModalComponent } from "../../ui/modals/confirmationModalComponent.js";
 
 export class UserDocumentsPageComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
     this.documentPreferencesService = documentPreferencesService;
     this.routingService = routingService;
+    this.modalService = modalService;
     this.documentServiceApi = documentServiceApi;
+    this.componentLifecycleService = componentLifecycleService;
 
-    this.componentRefreshService = new ComponentRefreshService(
-      this.eventListenerService
-    );
-
-    this._refreshUserDocuments();
+    this.refreshUserDocuments();
   }
 
   events = [
@@ -35,13 +35,18 @@ export class UserDocumentsPageComponent {
       action: (pointer) => {
         const documentId = pointer.srcElement.dataset.documentId;
 
+        console.log("clicked");
+
         this.documentServiceApi
           .retrieveDocumentById(documentId)
           .then((document) => {
             this.documentPreferencesService.documentId = document.documentId;
-            this.documentPreferencesService.documentTitle = document.documentName;
-            this.documentPreferencesService.preferences = document.documentPreferences;
-            this.documentPreferencesService.documentContent = document.documentContent;
+            this.documentPreferencesService.documentTitle =
+              document.documentName;
+            this.documentPreferencesService.preferences =
+              document.documentPreferences;
+            this.documentPreferencesService.documentContent =
+              document.documentContent;
             this.routingService.setRoute("/editor");
           });
       },
@@ -51,23 +56,28 @@ export class UserDocumentsPageComponent {
       eventType: "click",
       action: (pointer) => {
         const documentToDelete = pointer.target.dataset.deleteDocument;
-        this.documentServiceApi.deleteDocumentById(documentToDelete)
-        .then(()=> this._refreshUserDocuments())
+
+        new ConfirmationModalComponent(() => {
+          this.documentServiceApi
+            .deleteDocumentById(documentToDelete)
+            .then(() => this.refreshUserDocuments());
+        });
+        
       },
     },
   ];
 
-  _refreshUserDocuments(){
-    this.documentServiceApi.retrieveAllDocuments()
+  refreshUserDocuments() {
+    this.documentServiceApi
+      .retrieveAllDocuments()
       .then((documents) => {
         this.documents = [...documents];
-        this.componentRefreshService.refreshComponent(this.render.bind(this));
+        this.componentLifecycleService.refreshComponent(this.render.bind(this));
       })
       .catch((error) => {
         console.error("Error fetching documents:", error);
       });
   }
-
 
   _pushEvents() {
     this.eventListenerService.events.push(...this.events);

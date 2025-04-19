@@ -1,17 +1,14 @@
 import { eventListenerService } from "../../services/eventService.js";
 import { routingService } from "../../services/routingService.js";
 import { userAuthenticationService } from "../../services/api/userAuthenticationService.js";
-import { ComponentRefreshService } from "../../services/componentRefreshService.js";
+import { componentLifecycleService } from "../../services/componentLifecycleService.js";
 
 export class UserLoginPageComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
     this.routingService = routingService;
     this.userAuthenticationService = userAuthenticationService;
-
-    this.componentRefreshService = new ComponentRefreshService(
-      this.eventListenerService
-    );
+    this.componentLifecycleService = componentLifecycleService;
   }
 
   loginError = false;
@@ -54,7 +51,7 @@ export class UserLoginPageComponent {
       this.routingService.setRoute("/allDocuments");
     } else {
       //Refresh component to ensure we now show error
-      this.componentRefreshService.refreshComponent(this.render.bind(this));
+      this.componentLifecycleService.refreshComponent(this.render.bind(this));
     }
   }
 

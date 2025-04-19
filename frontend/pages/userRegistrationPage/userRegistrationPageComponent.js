@@ -1,6 +1,6 @@
 import { eventListenerService } from "../../services/eventService.js";
 import { userAuthenticationService } from "../../services/api/userAuthenticationService.js";
-import { ComponentRefreshService } from "../../services/componentRefreshService.js";
+import { componentLifecycleService } from "../../services/componentLifecycleService.js";
 import { routingService } from "../../services/routingService.js";
 
 export class UserRegistrationPageComponent {
@@ -8,10 +8,7 @@ export class UserRegistrationPageComponent {
     this.eventListenerService = eventListenerService;
     this.userAuthenticationService = userAuthenticationService;
     this.routingService = routingService;
-
-    this.componentRefreshService = new ComponentRefreshService(
-      this.eventListenerService
-    );
+    this.componentLifecycleService = componentLifecycleService;
   }
 
   errorMessage = "";
@@ -46,7 +43,7 @@ export class UserRegistrationPageComponent {
           this.errorMessage = response.message;
         }
 
-        this.componentRefreshService.refreshComponent(this.render.bind(this));
+        this.ComponentLifecycleService.refreshComponent(this.render.bind(this));
       });
   }
 
