@@ -1,15 +1,13 @@
 import { eventListenerService } from "../../../../services/eventService.js";
 import { toolbarService } from "../../../../services/toolbarService.js";
-import { modalService } from "../../../../services/modalService.js";
 import { routingService } from "../../../../services/routingService.js";
 import { documentServiceApi } from "../../../../services/api/documentServiceApi.js";
 import { documentPreferencesService } from "../../../../services/documentPreferencesService.js";
-
+import { ShapesModalComponent } from "../../../../ui/modals/shapesModalComponent.js";
 export class DocumentSettingsComponent {
   constructor() {
     this.eventListenerService = eventListenerService;
     this.toolbarService = toolbarService;
-    this.modalService = modalService;
     this.routingService = routingService;
     this.documentServiceApi = documentServiceApi;
     this.documentPreferencesService = documentPreferencesService;
@@ -44,7 +42,9 @@ export class DocumentSettingsComponent {
     {
       id: "toggle-shapes-modal",
       eventType: "click",
-      action: () => this.modalService.setModalSubject("ShapesModal"),
+      action: () => {
+        new ShapesModalComponent();
+      },
     },
     {
       id: "home-button",

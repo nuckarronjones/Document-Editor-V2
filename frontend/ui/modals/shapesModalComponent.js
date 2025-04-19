@@ -1,60 +1,46 @@
-import { modalService } from "../../services/modalService.js";
 import { eventListenerService } from "../../services/eventService.js";
 import { toolbarService } from "../../services/toolbarService.js";
+import { componentLifecycleService } from "../../services/componentLifecycleService.js";
 
 import { SHAPES } from "../../data/documentData.js";
 
 export class ShapesModalComponent {
   constructor() {
-    this.modalService = modalService;
     this.eventListenerService = eventListenerService;
     this.toolbarService = toolbarService;
+    this.componentLifecycleService = componentLifecycleService;
 
     this.shapes = SHAPES;
 
-    document.body.innerHTML += this.render();
-    this.modalService.subscribe(this.handleModalChange.bind(this));
+    this.render();
+
+    this.eventListenerService.initializeEventListeners();
   }
 
-  show() {
-    document.getElementById("shapesModal").classList.remove("hidden");
-    document.getElementById("shapesModal").classList.add("visible");
-  }
-
-  hide() {
-    document.getElementById("shapesModal").classList.remove("visible");
-    document.getElementById("shapesModal").classList.add("hidden");
-  }
-
-  renderIcons(){
+  renderIcons() {
     let formattedHTML = [];
 
-    this.shapes.forEach((shape, index)=>{
+    this.shapes.forEach((shape, index) => {
       const source = this.shapes[index][Object.keys(shape)];
 
       formattedHTML.push(
         `
-          <li class='modal-shape-option'>
+          <li class='shapeOption'>
               <img
                 src='${source}'
               />
           </li>
         `
       );
-    })
+    });
     return formattedHTML.join("");
   }
 
-  handleModalChange(currentModal) {
-    if (currentModal == "ShapesModal") {
-      this.show();
-    } else {
-      this.hide();
-    }
-  }
-
-  closeModal(){
-    this.modalService.setModalSubject(null);
+  closeModal() {
+    this.componentLifecycleService.destroyComponent(
+      "ShapesModalComponent",
+      this.events
+    );
   }
 
   events = [
@@ -64,21 +50,24 @@ export class ShapesModalComponent {
       action: () => this.closeModal(),
     },
     {
-      class: "modal-shape-option",
+      class: "shapeOption",
       eventType: "click",
-      action: (pointer) => this.toolbarService.insertShape(pointer,this.closeModal())
+      action: (pointer) => {
+        this.toolbarService.insertShape(pointer);
+        this.closeModal();
+      },
     },
   ];
 
-  _pushEvents(){
+  _pushEvents() {
     this.eventListenerService.events.push(...this.events);
   }
 
   render() {
     this._pushEvents();
 
-    return `
-          <div id="shapesModal" class="hidden">
+    document.body.innerHTML += `
+          <div id="ShapesModalComponent">
 
             <div id="modalContainer"></div>
 

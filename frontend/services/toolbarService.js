@@ -86,7 +86,7 @@ class ToolbarService {
     document.body.removeChild(fileDownload);
   }
 
-  insertShape(pointer, closeModal) {
+  insertShape(pointer) {
     const imageURL = pointer.srcElement.src;
     const newDiv = document.createElement("img");
 
@@ -95,8 +95,6 @@ class ToolbarService {
     newDiv.src = imageURL;
 
     this.documentElement().appendChild(newDiv);
-
-    closeModal;
   }
 
   printDocument() {
