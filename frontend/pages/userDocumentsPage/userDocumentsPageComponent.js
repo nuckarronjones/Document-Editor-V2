@@ -30,7 +30,7 @@ export class UserDocumentsPageComponent {
       },
     },
     {
-      class: "user-document",
+      className: "user-document",
       eventType: "click",
       action: (pointer) => {
         const documentId = pointer.srcElement.dataset.documentId;
@@ -47,7 +47,7 @@ export class UserDocumentsPageComponent {
       },
     },
     {
-      class: "card-delete-icon",
+      className: "card-delete-icon",
       eventType: "click",
       action: (pointer) => {
         const documentToDelete = pointer.target.dataset.deleteDocument;

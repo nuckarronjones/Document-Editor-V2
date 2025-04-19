@@ -6,7 +6,7 @@ class EventListenerService {
   initializeEventListeners() {
     this.events.forEach((eventSubject) => {
       const eventUsesId = Object.keys(eventSubject).indexOf("id") !== -1;
-      const eventUsesClass = Object.keys(eventSubject).indexOf("class") !== -1;
+      const eventUsesClass = Object.keys(eventSubject).indexOf("className") !== -1;
 
       if (eventUsesId) {
         this._alterEventListenerOnId(eventSubject, true);
@@ -41,9 +41,7 @@ class EventListenerService {
   }
 
   _alterEventListenerOnId(eventSubject, applyEvent) {
-    const id = eventSubject.id;
-    const eventType = eventSubject.eventType;
-    const action = eventSubject.action;
+    const {id, eventType, action} = eventSubject;
     
     if (applyEvent) {
       document.getElementById(id).addEventListener(eventType, action);
@@ -53,9 +51,8 @@ class EventListenerService {
   }
 
   _alterEventListenersOnClasses(eventSubject, applyEvent) {
-    const className = eventSubject.class;
-    const eventType = eventSubject.eventType;
-    const action = eventSubject.action;
+    const {className, eventType, action} = eventSubject;
+
     const elements = document.getElementsByClassName(className);
 
     for (let i = 0; i < elements.length; i++) {
