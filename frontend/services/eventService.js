@@ -3,40 +3,68 @@ class EventListenerService {
     this.events = [];
   }
 
-  _addEventListenerOnId(eventSubject) {
-    const id = eventSubject.id;
-    const eventType = eventSubject.eventType;
-    const action = eventSubject.action;
-
-    document.getElementById(id).addEventListener(eventType, action);
-  }
-
-  _addEventListenersOnClasses(eventSubject) {
-    const className = eventSubject.class;
-    const eventType = eventSubject.eventType;
-    const action = eventSubject.action;
-    const elements = document.getElementsByClassName(className);
-
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].addEventListener(eventType, action);
-    }
-  }
-
   initializeEventListeners() {
     this.events.forEach((eventSubject) => {
       const eventUsesId = Object.keys(eventSubject).indexOf("id") !== -1;
       const eventUsesClass = Object.keys(eventSubject).indexOf("class") !== -1;
 
       if (eventUsesId) {
-        this._addEventListenerOnId(eventSubject);
+        this._alterEventListenerOnId(eventSubject, true);
       } else if (eventUsesClass) {
-        this._addEventListenersOnClasses(eventSubject);
+        this._alterEventListenersOnClasses(eventSubject, true);
+      }
+
+    });
+  }
+
+  removeEventListeners(removableEvents) {
+    removableEvents.forEach((eventToBeRemoved) => {
+      const indexOfRemovableEvent = this.events.indexOf(eventToBeRemoved);
+
+      if (indexOfRemovableEvent !== -1) {
+        const eventUsesId = Object.keys(eventToBeRemoved).indexOf("id") !== -1;
+        const eventUsesClass = Object.keys(eventToBeRemoved).indexOf("class") !== -1;
+
+        if (eventUsesId) {
+          this._alterEventListenerOnId(eventToBeRemoved, false);
+        } else if (eventUsesClass) {
+          this._alterEventListenersOnClasses(eventToBeRemoved, false);
+        }
+
+        this.events.splice(indexOfRemovableEvent, 1);
       }
     });
   }
 
-  emptyEventListeners(){
+  emptyEventListeners() {
     this.events = [];
+  }
+
+  _alterEventListenerOnId(eventSubject, applyEvent) {
+    const id = eventSubject.id;
+    const eventType = eventSubject.eventType;
+    const action = eventSubject.action;
+    
+    if (applyEvent) {
+      document.getElementById(id).addEventListener(eventType, action);
+    } else {
+      document.getElementById(id).removeEventListener(eventType, action);
+    }
+  }
+
+  _alterEventListenersOnClasses(eventSubject, applyEvent) {
+    const className = eventSubject.class;
+    const eventType = eventSubject.eventType;
+    const action = eventSubject.action;
+    const elements = document.getElementsByClassName(className);
+
+    for (let i = 0; i < elements.length; i++) {
+      if (applyEvent) {
+        elements[i].addEventListener(eventType, action);
+      } else {
+        elements[i].removeEventListener(eventType, action);
+      }
+    }
   }
 }
 
