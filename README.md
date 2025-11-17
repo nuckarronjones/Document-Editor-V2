@@ -24,3 +24,34 @@ This project is a refactored version of my older document editor application, no
 ### Backend:
 - **Node.js & Express:** Server-side logic and routing.  
 - **MongoDB & Mongoose:** Persistent storage of user-created documents.  
+
+## Getting Started
+
+### 1. Install Dependencies
+
+Navigate to the `backend` folder and install the required dependencies:
+
+```bash
+cd backend
+npm install
+```
+
+### 2. Configure Environment Variables
+#### Server Configuration
+PORT=5501  # Replace with your desired port
+
+#### Database
+MONGO_URI=your_mongodb_connection_string_here
+
+#### Authentication
+JWT_SECRET=your_jwt_secret_here
+
+### 3. Run the Server
+
+```bash
+npm start
+```
+### 4. Register a User
+- Open the login interface in your browser.
+- Register a new user.
+- Start using the document editor!
